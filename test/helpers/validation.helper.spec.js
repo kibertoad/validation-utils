@@ -5,243 +5,243 @@ describe('ValidationHelper', () => {
 
   it('throw error on undefined properties', () => {
     expect(function () {
-      validationHelper.validateHasProperties({a: 'a', b: 'b', c: 'c'},
+      validationHelper.withProperties({a: 'a', b: 'b', c: 'c'},
         ['b', 'd', 'e'])
     }).to.throw(/Validated object doesn\'t have properties: d,e/);
   });
 
   it('do not throw error on defined properties', () => {
-    validationHelper.validateHasProperties({a: 'a', b: 'b', c: 'c'},
+    validationHelper.withProperties({a: 'a', b: 'b', c: 'c'},
       ['a', 'b', 'c']);
 
-    validationHelper.validateHasProperties({a: 'a', b: 'b', c: 'c'},
+    validationHelper.withProperties({a: 'a', b: 'b', c: 'c'},
       ['b']);
 
-    validationHelper.validateHasProperties({a: 'a', b: 'b', c: 'c'},
+    validationHelper.withProperties({a: 'a', b: 'b', c: 'c'},
       []);
 
-    validationHelper.validateHasProperties({a: 'a', b: 'b', c: 'c'},
+    validationHelper.withProperties({a: 'a', b: 'b', c: 'c'},
       null);
   });
 
   it('throw error on not truthy values', () => {
     expect(function () {
-      validationHelper.validateIsTruthy(false)
+      validationHelper.truthy(false)
     }).to.throw(/Validated object is not truthy/);
 
     expect(function () {
-      validationHelper.validateIsTruthy(undefined)
+      validationHelper.truthy(undefined)
     }).to.throw(/Validated object is not truthy/);
 
     expect(function () {
-      validationHelper.validateIsTruthy(NaN)
+      validationHelper.truthy(NaN)
     }).to.throw(/Validated object is not truthy/);
 
     expect(function () {
-      validationHelper.validateIsTruthy(0)
+      validationHelper.truthy(0)
     }).to.throw(/Validated object is not truthy/);
 
     expect(function () {
-      validationHelper.validateIsTruthy('')
+      validationHelper.truthy('')
     }).to.throw(/Validated object is not truthy/);
   });
 
   it('do not throw error on truthy values', () => {
-    validationHelper.validateIsTruthy(true);
-    validationHelper.validateIsTruthy({});
-    validationHelper.validateIsTruthy(1);
-    validationHelper.validateIsTruthy(-1);
-    validationHelper.validateIsTruthy(' ');
-    validationHelper.validateIsTruthy('a');
+    validationHelper.truthy(true);
+    validationHelper.truthy({});
+    validationHelper.truthy(1);
+    validationHelper.truthy(-1);
+    validationHelper.truthy(' ');
+    validationHelper.truthy('a');
   });
 
   it('throw error on not falsy values', () => {
     expect(function () {
-      validationHelper.validateIsFalsy(true)
+      validationHelper.falsy(true)
     }).to.throw(/Validated object is not falsy/);
 
     expect(function () {
-      validationHelper.validateIsFalsy({})
+      validationHelper.falsy({})
     }).to.throw(/Validated object is not falsy/);
 
     expect(function () {
-      validationHelper.validateIsFalsy(1)
+      validationHelper.falsy(1)
     }).to.throw(/Validated object is not falsy/);
 
     expect(function () {
-      validationHelper.validateIsFalsy(-1)
+      validationHelper.falsy(-1)
     }).to.throw(/Validated object is not falsy/);
 
     expect(function () {
-      validationHelper.validateIsFalsy(' ')
+      validationHelper.falsy(' ')
     }).to.throw(/Validated object is not falsy/);
 
     expect(function () {
-      validationHelper.validateIsFalsy('a')
+      validationHelper.falsy('a')
     }).to.throw(/Validated object is not falsy/);
   });
 
   it('do not throw error on falsy values', () => {
-    validationHelper.validateIsFalsy(false);
-    validationHelper.validateIsFalsy(undefined);
-    validationHelper.validateIsFalsy(NaN);
-    validationHelper.validateIsFalsy(0);
-    validationHelper.validateIsFalsy('');
+    validationHelper.falsy(false);
+    validationHelper.falsy(undefined);
+    validationHelper.falsy(NaN);
+    validationHelper.falsy(0);
+    validationHelper.falsy('');
   });
 
   it('throw error on not True values', () => {
     expect(function () {
-      validationHelper.validateIsTrue(false)
+      validationHelper.booleanTrue(false)
     }).to.throw(/Validated object is not True/);
 
     expect(function () {
-      validationHelper.validateIsTrue({})
+      validationHelper.booleanTrue({})
     }).to.throw(/Validated object is not True/);
 
     expect(function () {
-      validationHelper.validateIsTrue(1)
+      validationHelper.booleanTrue(1)
     }).to.throw(/Validated object is not True/);
   });
 
   it('do not throw error on True values', () => {
-    validationHelper.validateIsTrue(true);
+    validationHelper.booleanTrue(true);
   });
 
   it('throw error on not False values', () => {
     expect(function () {
-      validationHelper.validateIsFalse(true)
+      validationHelper.booleanFalse(true)
     }).to.throw(/Validated object is not False/);
 
     expect(function () {
-      validationHelper.validateIsFalse(undefined)
+      validationHelper.booleanFalse(undefined)
     }).to.throw(/Validated object is not False/);
 
     expect(function () {
-      validationHelper.validateIsFalse(null)
+      validationHelper.booleanFalse(null)
     }).to.throw(/Validated object is not False/);
 
     expect(function () {
-      validationHelper.validateIsFalse(NaN)
+      validationHelper.booleanFalse(NaN)
     }).to.throw(/Validated object is not False/);
 
     expect(function () {
-      validationHelper.validateIsFalse(0)
+      validationHelper.booleanFalse(0)
     }).to.throw(/Validated object is not False/);
 
     expect(function () {
-      validationHelper.validateIsFalse(1)
+      validationHelper.booleanFalse(1)
     }).to.throw(/Validated object is not False/);
   });
 
   it('do not throw error on False values', () => {
-    validationHelper.validateIsFalse(false);
+    validationHelper.booleanFalse(false);
   });
 
   it('throw error on not a Number value', () => {
     expect(function () {
-      validationHelper.validateIsNumber({})
+      validationHelper.number({})
     }).to.throw(/Validated object is not a number/);
 
     expect(function () {
-      validationHelper.validateIsNumber(undefined)
+      validationHelper.number(undefined)
     }).to.throw(/Validated object is not a number/);
 
     expect(function () {
-      validationHelper.validateIsNumber(NaN)
+      validationHelper.number(NaN)
     }).to.throw(/Validated object is not a number/);
 
     expect(function () {
-      validationHelper.validateIsNumber(null)
+      validationHelper.number(null)
     }).to.throw(/Validated object is not a number/);
 
     expect(function () {
-      validationHelper.validateIsNumber('1')
+      validationHelper.number('1')
     }).to.throw(/Validated object is not a number/);
   });
 
   it('do not throw error on Number value', () => {
-    validationHelper.validateIsNumber(-1);
-    validationHelper.validateIsNumber(0);
-    validationHelper.validateIsNumber(1);
-    validationHelper.validateIsNumber(1.5);
+    validationHelper.number(-1);
+    validationHelper.number(0);
+    validationHelper.number(1);
+    validationHelper.number(1.5);
   });
 
   it('throw error on not a positive number value', () => {
     expect(function () {
-      validationHelper.validateIsPositiveNumber(0)
+      validationHelper.positiveNumber(0)
     }).to.throw(/Validated number is not positive/);
 
     expect(function () {
-      validationHelper.validateIsPositiveNumber(-1)
+      validationHelper.positiveNumber(-1)
     }).to.throw(/Validated number is not positive/);
 
     expect(function () {
-      validationHelper.validateIsPositiveNumber(NaN)
+      validationHelper.positiveNumber(NaN)
     }).to.throw(/Validated object is not a number/);
   });
 
   it('do not throw error on a positive number value', () => {
-    validationHelper.validateIsPositiveNumber(0.1);
-    validationHelper.validateIsPositiveNumber(1);
-    validationHelper.validateIsPositiveNumber(1.5);
+    validationHelper.positiveNumber(0.1);
+    validationHelper.positiveNumber(1);
+    validationHelper.positiveNumber(1.5);
   });
 
   it('throw error on null or undefined', () => {
     expect(function () {
-      validationHelper.validateIsNotNil(null);
+      validationHelper.notNil(null);
     }).to.throw(/Validated object is null or undefined/);
 
     expect(function () {
-      validationHelper.validateIsNotNil(undefined);
+      validationHelper.notNil(undefined);
     }).to.throw(/Validated object is null or undefined/);
   });
 
   it('do not throw error on not a null or undefined', () => {
-    validationHelper.validateIsNotNil(1);
-    validationHelper.validateIsNotNil(0);
-    validationHelper.validateIsNotNil(-1);
-    validationHelper.validateIsNotNil({});
-    validationHelper.validateIsNotNil('');
-    validationHelper.validateIsNotNil('a');
-    validationHelper.validateIsNotNil(true);
-    validationHelper.validateIsNotNil(false);
+    validationHelper.notNil(1);
+    validationHelper.notNil(0);
+    validationHelper.notNil(-1);
+    validationHelper.notNil({});
+    validationHelper.notNil('');
+    validationHelper.notNil('a');
+    validationHelper.notNil(true);
+    validationHelper.notNil(false);
   });
 
   it('throw error on empty object', () => {
     expect(function () {
-      validationHelper.validateIsNotEmpty([])
+      validationHelper.notEmpty([])
     }).to.throw(/Validated object is empty/);
 
     expect(function () {
-      validationHelper.validateIsNotEmpty('')
+      validationHelper.notEmpty('')
     }).to.throw(/Validated object is empty/);
 
     expect(function () {
-      validationHelper.validateIsNotEmpty(new Set())
+      validationHelper.notEmpty(new Set())
     }).to.throw(/Validated object is empty/);
 
     expect(function () {
-      validationHelper.validateIsNotEmpty(null)
+      validationHelper.notEmpty(null)
     }).to.throw(/Validated object is empty/);
 
     expect(function () {
-      validationHelper.validateIsNotEmpty(undefined)
+      validationHelper.notEmpty(undefined)
     }).to.throw(/Validated object is empty/);
 
     expect(function () {
-      validationHelper.validateIsNotEmpty(1)
+      validationHelper.notEmpty(1)
     }).to.throw(/Validated object is empty/);
 
     expect(function () {
-      validationHelper.validateIsNotEmpty({})
+      validationHelper.notEmpty({})
     }).to.throw(/Validated object is empty/);
   });
 
   it('do not throw error on a not empty object', () => {
-    validationHelper.validateIsNotEmpty({a: ''});
-    validationHelper.validateIsNotEmpty(' ');
-    validationHelper.validateIsNotEmpty('a');
-    validationHelper.validateIsNotEmpty([{}]);
+    validationHelper.notEmpty({a: ''});
+    validationHelper.notEmpty(' ');
+    validationHelper.notEmpty('a');
+    validationHelper.notEmpty([{}]);
   });
 
 });
