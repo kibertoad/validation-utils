@@ -1,2 +1,66 @@
 # validation-utils
+
 Validation utils for Javascript, similar to Commons Lang Validate methods in Java world
+
+### Server-side usage
+
+Install the library with `npm install validation-utils`
+
+```javascript
+var validate = require('validation-utils').validationHelper;
+
+function init (email) {
+  this.email = validate.notEmpty(email); //will throw an error if email is not provided
+}
+```
+
+#### ES6
+
+```javascript
+import validationHelper from 'validation-utils';
+```
+
+### Validators
+
+- **booleanFalse(entity [, errorText])** - check if entity is a boolean with value False.
+- **booleanTrue(entity [, errorText])** - check if entity is a boolean with value True.
+- **falsy(entity [, errorText])** - check if entity is falsy.
+- **notEmpty(entity [, errorText])** - check if entity is not an empty Object, String or Array.
+- **notNil(entity [, errorText])** - check if entity is not null or undefined.
+- **number(entity [, errorText])** - check if entity is a number.
+- **positiveNumber(entity [, errorText])** - check if entity is a positive number.
+- **truthy(entity [, errorText])** - check if entity is truthy.
+- **withProperties(entity, expectedProperties)** - check if entity has at least a given set of properties defined.
+
+All validators return validated value as a result.
+
+### Tests
+
+```sh
+$ npm test
+```
+
+### License (MIT)
+
+```
+Copyright (c) 2017 Igor Savin <kibertoad@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```

@@ -126,13 +126,13 @@ function withProperties(validatedObject, validatedProperties) {
 }
 
 module.exports = {
-  withProperties,
   booleanFalse,
+  booleanTrue,
   falsy,
   notEmpty,
   notNil,
   number,
   positiveNumber,
-  booleanTrue,
-  truthy
+  truthy,
+  withProperties
 };
