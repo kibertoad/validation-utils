@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const validationHelper = require('../../src/helpers/validation.helper');
 
-describe.only('ValidationHelper', () => {
+describe('ValidationHelper', () => {
 
   it('throw error on undefined properties', () => {
     expect(function () {
