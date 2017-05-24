@@ -1,0 +1,49 @@
+{
+  "name": "validation-utils",
+  "version": "1.0.0",
+  "description": "Validation utilities",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha ./test",
+    "test-coverage": "nyc npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:kibertoad/validation-utils.git"
+  },
+  "keywords": [
+    "common",
+    "utilities"
+  ],
+  "homepage": "https://github.com/kibertoad/validation-utils",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "3.19.0",
+    "eslint-plugin-node": "^4.2.1",
+    "eslint-html-reporter": "^0.5.2",
+    "mocha": "^3.4.1",
+    "nyc": "10.3.2"
+  },
+  "nyc": {
+    "description": "test coverage",
+    "include": [
+      "src/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "cache": true,
+    "all": true,
+    "report-dir": "./build/reports/coverage",
+    "check-coverage": true,
+    "lines": 95,
+    "statements": 95,
+    "functions": 100,
+    "branches": 100
+  }
+
+}

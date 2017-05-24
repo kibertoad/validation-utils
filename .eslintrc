@@ -1,0 +1,38 @@
+{
+  "plugins": ["node"],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "node/no-missing-require": 0,
+    "node/no-unpublished-require": 0,
+    "node/no-unsupported-features": 0,
+    "node/exports-style": ["warn", "module.exports"],
+    "space-before-function-paren": [2, {"anonymous": "always", "named": "never"}],
+    "space-in-parens": [2, "never"],
+    "space-infix-ops": 2,
+    "no-whitespace-before-property": 2,
+    "no-tabs": 2,
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "no-cond-assign": 2,
+    "eqeqeq": 2,
+    "no-eval": 2,
+    "no-multi-spaces": 2,
+    "no-delete-var": 2,
+    "no-unused-vars": 2,
+    "curly": 2,
+    "key-spacing": 2,
+    "prefer-const": 2,
+    "quotes": ["error", "single"],
+  }
+}
