@@ -13,7 +13,9 @@
   },
   "keywords": [
     "common",
-    "utilities"
+    "utilities",
+    "validation",
+    "assertion"
   ],
   "homepage": "https://github.com/kibertoad/validation-utils",
   "dependencies": {
