@@ -244,4 +244,37 @@ describe('ValidationHelper', () => {
     validationHelper.notEmpty([{}]);
   });
 
+  it('throw error on not a string', () => {
+    expect(function () {
+      validationHelper.string({});
+    }).to.throw(/Validated object is not a string/);
+
+    expect(function () {
+      validationHelper.string(1);
+    }).to.throw(/Validated object is not a string/);
+
+    expect(function () {
+      validationHelper.string(true);
+    }).to.throw(/Validated object is not a string/);
+
+    expect(function () {
+      validationHelper.string([]);
+    }).to.throw(/Validated object is not a string/);
+
+    expect(function () {
+      validationHelper.string(null);
+    }).to.throw(/Validated object is not a string/);
+
+    expect(function () {
+      validationHelper.string(undefined);
+    }).to.throw(/Validated object is not a string/);
+  });
+
+  it('do not throw error on a string', () => {
+    validationHelper.string('');
+    validationHelper.string(' ');
+    validationHelper.string('a');
+    validationHelper.string('1');
+  });
+
 });

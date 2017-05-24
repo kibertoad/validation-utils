@@ -29,6 +29,7 @@ import validationHelper from 'validation-utils';
 - **notNil(entity [, errorText])** - check if entity is not null or undefined.
 - **number(entity [, errorText])** - check if entity is a number.
 - **positiveNumber(entity [, errorText])** - check if entity is a positive number.
+- **string(entity [, errorText])** - check if entity is a string.
 - **truthy(entity [, errorText])** - check if entity is truthy.
 - **withProperties(entity, expectedProperties)** - check if entity has at least a given set of properties defined.
 

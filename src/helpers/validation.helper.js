@@ -55,6 +55,19 @@ function positiveNumber(validatedObject, errorText) {
 }
 
 /**
+ * Checks value to be a string
+ * @param validatedObject
+ * @param {String} [errorText] - message for error thrown if validation fails
+ * @returns {String} validatedObject
+ */
+function string(validatedObject, errorText) {
+  if (!_.isString(validatedObject)) {
+    throw new Error(errorText || 'Validated object is not a string');
+  }
+  return validatedObject;
+}
+
+/**
  * Checks value to be a True boolean
  * @param validatedObject
  * @param {String} [errorText] - message for error thrown if validation fails
@@ -133,6 +146,7 @@ module.exports = {
   notNil,
   number,
   positiveNumber,
+  string,
   truthy,
   withProperties
 };
