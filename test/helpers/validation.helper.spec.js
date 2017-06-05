@@ -107,6 +107,29 @@ describe('ValidationHelper', () => {
     validationHelper.booleanTrue(true);
   });
 
+  it('throw error on not non-strict boolean values', () => {
+    expect(function () {
+      validationHelper.booleanNonStrict('0')
+    }).to.throw(/Validated object is not Boolean/);
+
+    expect(function () {
+      validationHelper.booleanNonStrict({})
+    }).to.throw(/Validated object is not Boolean/);
+
+    expect(function () {
+      validationHelper.booleanNonStrict('tru')
+    }).to.throw(/Validated object is not Boolean/);
+  });
+
+  it('do not throw error on non-strict boolean values', () => {
+    validationHelper.booleanNonStrict(true);
+    validationHelper.booleanNonStrict(false);
+    validationHelper.booleanNonStrict('true');
+    validationHelper.booleanNonStrict('TRUE');
+    validationHelper.booleanNonStrict('false');
+    validationHelper.booleanNonStrict('false');
+  });
+
   it('throw error on not False values', () => {
     expect(function () {
       validationHelper.booleanFalse(true)

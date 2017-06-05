@@ -1,5 +1,5 @@
-'use-strict'
-let _ = require('lodash');
+'use-strict';
+const _ = require('lodash');
 
 /**
  * Checks value not to be null or undefined
@@ -81,6 +81,22 @@ function booleanTrue(validatedObject, errorText) {
 }
 
 /**
+ * Checks value to be a boolean or a (case-insensitive) 'true' or 'false' string
+ * @param validatedObject
+ * @param {String} [errorText] - message for error thrown if validation fails
+ * @returns {*} validatedObject
+ */
+function booleanNonStrict(validatedObject, errorText) {
+  if (!_.isBoolean(validatedObject)) {
+    if ((!_.isString(validatedObject)) ||
+      (validatedObject.toLowerCase() !== 'false' && validatedObject.toLowerCase() !== 'true')) {
+      throw new Error(errorText || 'Validated object is not Boolean');
+    }
+  }
+  return validatedObject;
+}
+
+/**
  * Checks value to be a False boolean
  * @param validatedObject
  * @param {String} [errorText] - message for error thrown if validation fails
@@ -128,7 +144,7 @@ function falsy(validatedObject, errorText) {
 function withProperties(validatedObject, validatedProperties) {
   notNil(validatedObject);
 
-  let undefinedProperties = _.filter(validatedProperties, function (property) {
+  const undefinedProperties = _.filter(validatedProperties, function (property) {
     return !validatedObject.hasOwnProperty(property);
   });
 
@@ -140,6 +156,7 @@ function withProperties(validatedObject, validatedProperties) {
 
 module.exports = {
   booleanFalse,
+  booleanNonStrict,
   booleanTrue,
   falsy,
   notEmpty,
