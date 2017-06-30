@@ -1,0 +1,9 @@
+.idea/
+.editorconfig
+.eslintignore
+.eslintrc
+.nyc_output/
+.npmignore
+build/
+test/
+README.md
