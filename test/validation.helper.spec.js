@@ -1,4 +1,5 @@
 const expect = require("chai").expect;
+const ValidationError = require("../lib/ValidationError");
 const validationHelper = require("../lib/validation.helper");
 
 describe("ValidationHelper", () => {
@@ -300,5 +301,11 @@ describe("ValidationHelper", () => {
     validationHelper.string(" ");
     validationHelper.string("a");
     validationHelper.string("1");
+  });
+
+  it("throws ValidationError", () => {
+    expect(function() {
+      validationHelper.string(undefined);
+    }).to.throw(ValidationError);
   });
 });
