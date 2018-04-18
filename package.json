@@ -40,7 +40,7 @@
   "nyc": {
     "description": "test coverage",
     "include": [
-      "src/**"
+      "lib/**"
     ],
     "reporter": [
       "lcov",

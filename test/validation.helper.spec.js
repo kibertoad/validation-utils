@@ -206,10 +206,30 @@ describe("ValidationHelper", () => {
     }).to.throw(/Validated object is not a number/);
   });
 
+  it("throw error on not a negative number value", () => {
+    expect(function() {
+      validationHelper.negativeNumber(0);
+    }).to.throw(/Validated number is not negative/);
+
+    expect(function() {
+      validationHelper.negativeNumber(1);
+    }).to.throw(/Validated number is not negative/);
+
+    expect(function() {
+      validationHelper.negativeNumber(NaN);
+    }).to.throw(/Validated object is not a number/);
+  });
+
   it("do not throw error on a positive number value", () => {
     validationHelper.positiveNumber(0.1);
     validationHelper.positiveNumber(1);
     validationHelper.positiveNumber(1.5);
+  });
+
+  it("do not throw error on a negative number value", () => {
+    validationHelper.negativeNumber(-0.1);
+    validationHelper.negativeNumber(-1);
+    validationHelper.negativeNumber(-1.5);
   });
 
   it("throw error on null or undefined", () => {
@@ -296,11 +316,38 @@ describe("ValidationHelper", () => {
     }).to.throw(/Validated object is not a string/);
   });
 
+  it("throw error on not an object", () => {
+    expect(function() {
+      validationHelper.object_("s");
+    }).to.throw(/Validated object is not an object/);
+
+    expect(function() {
+      validationHelper.object_(1);
+    }).to.throw(/Validated object is not an object/);
+
+    expect(function() {
+      validationHelper.object_(true);
+    }).to.throw(/Validated object is not an object/);
+
+    expect(function() {
+      validationHelper.object_(null);
+    }).to.throw(/Validated object is not an object/);
+
+    expect(function() {
+      validationHelper.object_(undefined);
+    }).to.throw(/Validated object is not an object/);
+  });
+
   it("do not throw error on a string", () => {
     validationHelper.string("");
     validationHelper.string(" ");
     validationHelper.string("a");
     validationHelper.string("1");
+  });
+
+  it("do not throw error on an object", () => {
+    validationHelper.object_({});
+    validationHelper.object_({ a: "a" });
   });
 
   it("throws ValidationError", () => {
