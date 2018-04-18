@@ -8,10 +8,12 @@
       "email": "kibertoad@gmail.com"
     }
   ],
-  "main": "src/index.js",
   "scripts": {
     "test": "mocha ./test",
-    "test-coverage": "nyc npm test"
+    "test-coverage": "nyc npm test",
+    "lint": "eslint . -f node_modules/eslint-html-reporter/reporter.js -o build/reports/eslint.html",
+    "lint-to-console": "eslint .",
+    "prettier": "prettier --write \"{lib,test}/**/*.{js,ts}\""
   },
   "repository": {
     "type": "git",
@@ -25,15 +27,15 @@
   ],
   "homepage": "http://github.com/kibertoad/validation-utils",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "3.19.0",
-    "eslint-plugin-node": "^4.2.1",
-    "eslint-html-reporter": "^0.5.2",
-    "mocha": "^3.4.1",
-    "nyc": "10.3.2"
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "mocha": "^5.1.0",
+    "nyc": "^11.6.0",
+    "prettier": "^1.12.1"
   },
   "nyc": {
     "description": "test coverage",
@@ -53,5 +55,4 @@
     "functions": 100,
     "branches": 100
   }
-
 }
