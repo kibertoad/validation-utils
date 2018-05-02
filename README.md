@@ -24,6 +24,8 @@ import validationHelper from 'validation-utils';
 
 - **booleanFalse(entity [, errorText])** - check if entity is a boolean with value False.
 - **booleanTrue(entity [, errorText])** - check if entity is a boolean with value True.
+- **inheritsFrom(entityClass, expectedParentClass [, errorText])** - check if class inherits from a given class.
+- **instanceOf(entity, expectedClass [, errorText])** - check if entity is an instance of a given class.
 - **falsy(entity [, errorText])** - check if entity is falsy.
 - **notEmpty(entity [, errorText])** - check if entity is not an empty Object, String or Array.
 - **notNil(entity [, errorText])** - check if entity is not null or undefined.

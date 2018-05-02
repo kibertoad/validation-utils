@@ -1,6 +1,6 @@
 {
   "name": "validation-utils",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Validation utilities",
   "maintainers": [
     {
@@ -27,14 +27,14 @@
   ],
   "homepage": "http://github.com/kibertoad/validation-utils",
   "dependencies": {
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-plugin-prettier": "^2.6.0",
-    "mocha": "^5.1.0",
-    "nyc": "^11.6.0",
+    "mocha": "^5.1.1",
+    "nyc": "^11.7.1",
     "prettier": "^1.12.1"
   },
   "nyc": {

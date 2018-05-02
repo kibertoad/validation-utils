@@ -350,6 +350,66 @@ describe("ValidationHelper", () => {
     validationHelper.object_({ a: "a" });
   });
 
+  it("throw error on not an inheritor of a class", () => {
+    class X {}
+    class X2 extends X {}
+    class Y {}
+
+    expect(function() {
+      validationHelper.inheritsFrom(X, X2);
+    }).to.throw(/Validated class does not inherit from X2/);
+
+    expect(function() {
+      validationHelper.inheritsFrom(X, Y);
+    }).to.throw(/Validated class does not inherit from Y/);
+
+    expect(function() {
+      validationHelper.inheritsFrom(Object, Y);
+    }).to.throw(/Validated class does not inherit from Y/);
+
+    expect(function() {
+      validationHelper.inheritsFrom(null, Y);
+    }).to.throw(/Validated class does not inherit from Y/);
+  });
+
+  it("do not throw error on inheritor of a class", () => {
+    class X {}
+    class X2 extends X {}
+    validationHelper.inheritsFrom(X, X);
+    validationHelper.inheritsFrom(X2, X2);
+    validationHelper.inheritsFrom(X2, X);
+  });
+
+  it("throw error on not an instance of a class", () => {
+    class X {}
+    class X2 extends X {}
+    class Y {}
+
+    expect(function() {
+      validationHelper.instanceOf(new X(), X2);
+    }).to.throw(/Validated object is not an instance of X2/);
+
+    expect(function() {
+      validationHelper.instanceOf(new X(), Y);
+    }).to.throw(/Validated object is not an instance of Y/);
+
+    expect(function() {
+      validationHelper.instanceOf({}, Y);
+    }).to.throw(/Validated object is not an instance of Y/);
+
+    expect(function() {
+      validationHelper.instanceOf(null, Y);
+    }).to.throw(/Validated object is not an instance of Y/);
+  });
+
+  it("do not throw error on an instance of a class", () => {
+    class X {}
+    class X2 extends X {}
+    validationHelper.instanceOf(new X(), X);
+    validationHelper.instanceOf(new X2(), X2);
+    validationHelper.instanceOf(new X2(), X);
+  });
+
   it("throws ValidationError", () => {
     expect(function() {
       validationHelper.string(undefined);
