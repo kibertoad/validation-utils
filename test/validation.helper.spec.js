@@ -474,6 +474,32 @@ describe('ValidationHelper', () => {
     });
   });
 
+  describe('equal', () => {
+    it('throw error on not equal to', () => {
+      expect(() => {
+        validationHelper.equal(1, 2);
+      }).to.throw(/Validated entity 1 is not equal to 2/);
+
+      expect(() => {
+        validationHelper.equal({}, {});
+      }).to.throw('Validated entity [object Object] is not equal to [object Object]');
+
+      expect(() => {
+        validationHelper.equal('a', 'b');
+      }).to.throw(/Validated entity a is not equal to b/);
+    });
+
+    it('do not throw error on equal to', () => {
+      validationHelper.equal(1, 1);
+      validationHelper.equal('dummy', 'dummy');
+
+      const object = {};
+      validationHelper.equal(object, object);
+      validationHelper.equal(null, null);
+      validationHelper.equal(undefined, undefined);
+    });
+  });
+
   describe('ValidationError', () => {
     it('throws ValidationError', () => {
       expect(() => {

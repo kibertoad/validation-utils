@@ -1,7 +1,8 @@
 {
   "name": "validation-utils",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Validation utilities",
+  "license": "MIT",
   "maintainers": [
     {
       "name": "Igor Savin",
@@ -35,7 +36,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "mocha": "^5.1.1",
-    "nyc": "^11.7.2",
+    "nyc": "^11.7.3",
     "prettier": "^1.12.1"
   },
   "nyc": {
