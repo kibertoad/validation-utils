@@ -14,7 +14,8 @@
     "test-coverage": "nyc npm test",
     "lint": "eslint . -f node_modules/eslint-html-reporter/reporter.js -o build/reports/eslint.html",
     "lint-to-console": "eslint .",
-    "prettier": "prettier --write \"{lib,test}/**/*.{js,ts}\""
+    "prettier": "prettier --write \"{lib,test}/**/*.{js,ts}\"",
+    "test-travis": "npm run lint-to-console && nyc mocha --opts \"./mocha.opts\" test"
   },
   "repository": {
     "type": "git",

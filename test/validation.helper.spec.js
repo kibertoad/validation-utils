@@ -402,14 +402,11 @@ describe('ValidationHelper', () => {
 
   describe('inheritsFrom', () => {
     it('throw error on not an inheritor of a class', () => {
-      class X {
-      }
+      class X {}
 
-      class X2 extends X {
-      }
+      class X2 extends X {}
 
-      class Y {
-      }
+      class Y {}
 
       expect(() => {
         validationHelper.inheritsFrom(X, X2);
@@ -429,11 +426,9 @@ describe('ValidationHelper', () => {
     });
 
     it('do not throw error on inheritor of a class', () => {
-      class X {
-      }
+      class X {}
 
-      class X2 extends X {
-      }
+      class X2 extends X {}
 
       validationHelper.inheritsFrom(X, X);
       validationHelper.inheritsFrom(X2, X2);
@@ -443,14 +438,11 @@ describe('ValidationHelper', () => {
 
   describe('instanceOf', () => {
     it('throw error on not an instance of a class', () => {
-      class X {
-      }
+      class X {}
 
-      class X2 extends X {
-      }
+      class X2 extends X {}
 
-      class Y {
-      }
+      class Y {}
 
       expect(() => {
         validationHelper.instanceOf(new X(), X2);
@@ -470,11 +462,9 @@ describe('ValidationHelper', () => {
     });
 
     it('do not throw error on an instance of a class', () => {
-      class X {
-      }
+      class X {}
 
-      class X2 extends X {
-      }
+      class X2 extends X {}
 
       validationHelper.instanceOf(new X(), X);
       validationHelper.instanceOf(new X2(), X2);
