@@ -1,11 +1,10 @@
-[npm-image]: https://img.shields.io/npm/v/validation-utils.svg
-[npm-url]: https://npmjs.org/package/validation-utils
-[downloads-image]: https://img.shields.io/npm/dm/validation-utils.svg
-[downloads-url]: https://npmjs.org/package/validation-utils
-
 # validation-utils
 
-Validation utils for Javascript, similar to Commons Lang Validate methods in Java world
+Validation utils for Javascript that provide convenient way to throw a typed error if some expected condition is not satisfied
+
+  [![NPM Version][npm-image]][npm-url]
+  [![NPM Downloads][downloads-image]][downloads-url]
+  [![Linux Build][travis-image]][travis-url]
 
 ### Server-side usage
 
@@ -78,3 +77,8 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
+
+[npm-image]: https://img.shields.io/npm/v/validation-utils.svg
+[npm-url]: https://npmjs.org/package/validation-utils
+[downloads-image]: https://img.shields.io/npm/dm/validation-utils.svg
+[downloads-url]: https://npmjs.org/package/validation-utils
