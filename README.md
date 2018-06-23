@@ -82,3 +82,5 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [npm-url]: https://npmjs.org/package/validation-utils
 [downloads-image]: https://img.shields.io/npm/dm/validation-utils.svg
 [downloads-url]: https://npmjs.org/package/validation-utils
+[travis-image]: https://img.shields.io/travis/kibertoad/validation-utils/master.svg?label=linux
+[travis-url]: https://travis-ci.org/kibertoad/validation-utils
