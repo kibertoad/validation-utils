@@ -1,3 +1,8 @@
+[npm-image]: https://img.shields.io/npm/v/validation-utils.svg
+[npm-url]: https://npmjs.org/package/validation-utils
+[downloads-image]: https://img.shields.io/npm/dm/validation-utils.svg
+[downloads-url]: https://npmjs.org/package/validation-utils
+
 # validation-utils
 
 Validation utils for Javascript, similar to Commons Lang Validate methods in Java world
@@ -22,6 +27,7 @@ import validationHelper from 'validation-utils';
 
 ### Validators
 
+- **array(entity [, errorText])** - check if entity is an array.
 - **booleanFalse(entity [, errorText])** - check if entity is a boolean with value False.
 - **booleanTrue(entity [, errorText])** - check if entity is a boolean with value True.
 - **inheritsFrom(entityClass, expectedParentClass [, errorText])** - check if class inherits from a given class.
