@@ -1,1 +1,3 @@
-module.exports = require('./lib/validation.helper');
+const validationHelper = require('./lib/validation.helper');
+
+module.exports = validationHelper;

@@ -11,7 +11,7 @@ Validation utils for Javascript that provide convenient way to throw a typed err
 Install the library with `npm install validation-utils`
 
 ```javascript
-var validate = require('validation-utils').validationHelper;
+var validate = require('validation-utils');
 
 function init (email) {
   this.email = validate.notEmpty(email); //will throw an error if email is not provided
@@ -21,7 +21,7 @@ function init (email) {
 #### ES6
 
 ```javascript
-import validationHelper from 'validation-utils';
+import * as validationHelper from 'validation-utils';
 ```
 
 ### Validators
