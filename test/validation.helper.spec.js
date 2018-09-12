@@ -110,6 +110,26 @@ describe('ValidationHelper', () => {
     });
   });
 
+  describe('date', () => {
+    it('throw error on not Date values', () => {
+      expect(() => {
+        validationHelper.date(false);
+      }).to.throw(/Validated object is not Date/);
+
+      expect(() => {
+        validationHelper.date({});
+      }).to.throw(/Validated object is not Date/);
+
+      expect(() => {
+        validationHelper.date(1);
+      }).to.throw(/Validated object is not Date/);
+    });
+
+    it('do not throw error on Date values', () => {
+      validationHelper.date(new Date());
+    });
+  });
+
   describe('booleanNonStrict', () => {
     it('throw error on not non-strict boolean values', () => {
       expect(() => {

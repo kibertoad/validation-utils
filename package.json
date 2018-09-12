@@ -1,6 +1,6 @@
 {
   "name": "validation-utils",
-  "version": "2.6.1",
+  "version": "2.7.0",
   "description": "Validation utilities",
   "license": "MIT",
   "maintainers": [
@@ -28,16 +28,16 @@
   ],
   "homepage": "http://github.com/kibertoad/validation-utils",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "eslint": "^5.0.1",
-    "eslint-config-prettier": "^2.9.0",
+    "eslint": "^5.5.0",
+    "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
-    "prettier": "^1.13.7"
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.2"
   },
   "nyc": {
     "description": "test coverage",

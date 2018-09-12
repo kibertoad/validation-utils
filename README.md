@@ -21,7 +21,7 @@ function init (email) {
 #### ES6
 
 ```javascript
-import * as validationHelper from 'validation-utils';
+import * as validate from 'validation-utils';
 ```
 
 ### Validators
@@ -29,11 +29,12 @@ import * as validationHelper from 'validation-utils';
 - **array(entity [, errorText])** - check if entity is an array.
 - **booleanFalse(entity [, errorText])** - check if entity is a boolean with value False.
 - **booleanTrue(entity [, errorText])** - check if entity is a boolean with value True.
-- **inheritsFrom(entityClass, expectedParentClass [, errorText])** - check if class inherits from a given class.
-- **instanceOf(entity, expectedClass [, errorText])** - check if entity is an instance of a given class.
+- **date(entity [, errorText])** - check if entity is an instance of Date.
+- **equal(entity, expectedEqualEntity [, errorText])** - check if entity is equal to the expected one (compared with ===).
 - **falsy(entity [, errorText])** - check if entity is falsy.
 - **function_(entity [, errorText])** - check if entity is a function.
-- **equal(entity, expectedEqualEntity [, errorText])** - check if entity is equal to the expected one (compared with ===).
+- **inheritsFrom(entityClass, expectedParentClass [, errorText])** - check if class inherits from a given class.
+- **instanceOf(entity, expectedClass [, errorText])** - check if entity is an instance of a given class.
 - **notEmpty(entity [, errorText])** - check if entity is not an empty Object, String or Array.
 - **notNil(entity [, errorText])** - check if entity is not null or undefined.
 - **number(entity [, errorText])** - check if entity is a number.
