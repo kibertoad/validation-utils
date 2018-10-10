@@ -27,6 +27,8 @@ import * as validate from 'validation-utils';
 ### Validators
 
 - **array(entity [, errorText])** - check if entity is an array.
+- **boolean_(entity [, errorText])** - check if entity is a boolean.
+- **booleanNonStrict(entity [, errorText])** - check if entity is a boolean or a (case-insensitive) 'true' or 'false' string.
 - **booleanFalse(entity [, errorText])** - check if entity is a boolean with value False.
 - **booleanTrue(entity [, errorText])** - check if entity is a boolean with value True.
 - **date(entity [, errorText])** - check if entity is an instance of Date.
