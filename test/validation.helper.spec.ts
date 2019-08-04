@@ -319,6 +319,47 @@ describe('ValidationHelper', () => {
     })
   })
 
+  describe('nil', () => {
+    it('throw error on not a null or undefined', () => {
+      expect(() => {
+        validationHelper.nil(1)
+      }).toThrow(/Validated object is not null or undefined/)
+
+      expect(() => {
+        validationHelper.nil(0)
+      }).toThrow(/Validated object is not null or undefined/)
+
+      expect(() => {
+        validationHelper.nil(-1)
+      }).toThrow(/Validated object is not null or undefined/)
+
+      expect(() => {
+        validationHelper.nil({})
+      }).toThrow(/Validated object is not null or undefined/)
+
+      expect(() => {
+        validationHelper.nil('')
+      }).toThrow(/Validated object is not null or undefined/)
+
+      expect(() => {
+        validationHelper.nil('a')
+      }).toThrow(/Validated object is not null or undefined/)
+
+      expect(() => {
+        validationHelper.nil(true)
+      }).toThrow(/Validated object is not null or undefined/)
+
+      expect(() => {
+        validationHelper.nil(false)
+      }).toThrow(/Validated object is not null or undefined/)
+    })
+
+    it('do not throw error on null or undefined', () => {
+      validationHelper.nil(null)
+      validationHelper.nil(undefined)
+    })
+  })
+
   describe('notEmpty', () => {
     it('throw error on empty object', () => {
       expect(() => {

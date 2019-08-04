@@ -15,6 +15,19 @@ export function notNil(validatedObject: any, errorText?: string) {
 }
 
 /**
+ * Checks value to be null or undefined
+ * @param {*} validatedObject
+ * @param {String} [errorText] - message for error thrown if validation fails
+ * @returns {*} validatedObject
+ */
+export function nil(validatedObject: any, errorText?: string) {
+  if (!_.isNil(validatedObject)) {
+    throw new ValidationError(errorText || 'Validated object is not null or undefined')
+  }
+  return validatedObject
+}
+
+/**
  * Checks value not to be an empty Object, String or Array
  * @param {*} validatedObject
  * @param {String} [errorText] - message for error thrown if validation fails

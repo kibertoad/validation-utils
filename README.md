@@ -39,6 +39,7 @@ import validationHelper from 'validation-utils';
 - **instanceOf(entity, expectedClass [, errorText])** - check if entity is an instance of a given class.
 - **notEmpty(entity [, errorText])** - check if entity is not an empty Object, String or Array.
 - **notNil(entity [, errorText])** - check if entity is not null or undefined.
+- **nil(entity [, errorText])** - check if entity is null or undefined.
 - **number(entity [, errorText])** - check if entity is a number.
 - **positiveNumber(entity [, errorText])** - check if entity is a positive number.
 - **negativeNumber(entity [, errorText])** - check if entity is a negative number.
