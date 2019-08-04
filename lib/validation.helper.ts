@@ -1,5 +1,5 @@
-const ValidationError = require('./ValidationError');
-const _ = require('lodash');
+import ValidationError from './ValidationError'
+import * as _ from 'lodash'
 
 /**
  * Checks value not to be null or undefined
@@ -7,11 +7,11 @@ const _ = require('lodash');
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-function notNil(validatedObject, errorText) {
+export function notNil(validatedObject: any, errorText?: string) {
   if (_.isNil(validatedObject)) {
-    throw new ValidationError(errorText || 'Validated object is null or undefined');
+    throw new ValidationError(errorText || 'Validated object is null or undefined')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -20,11 +20,11 @@ function notNil(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-function notEmpty(validatedObject, errorText) {
+export function notEmpty(validatedObject: any, errorText?: string) {
   if (_.isEmpty(validatedObject)) {
-    throw new ValidationError(errorText || 'Validated object is empty');
+    throw new ValidationError(errorText || 'Validated object is empty')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -33,11 +33,11 @@ function notEmpty(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-function number(validatedObject, errorText) {
+export function number(validatedObject: any, errorText?: string) {
   if (!_.isFinite(validatedObject)) {
-    throw new ValidationError(errorText || 'Validated object is not a number');
+    throw new ValidationError(errorText || 'Validated object is not a number')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -46,12 +46,12 @@ function number(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-function positiveNumber(validatedObject, errorText) {
-  number(validatedObject);
+export function positiveNumber(validatedObject: any, errorText?: string) {
+  number(validatedObject)
   if (validatedObject <= 0) {
-    throw new ValidationError(errorText || 'Validated number is not positive');
+    throw new ValidationError(errorText || 'Validated number is not positive')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -61,15 +61,15 @@ function positiveNumber(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-function lessThan(validatedObject, threshold, errorText) {
-  number(validatedObject);
-  number(threshold, 'Threshold is not a number');
+export function lessThan(validatedObject: any, threshold: number, errorText?: string) {
+  number(validatedObject)
+  number(threshold, 'Threshold is not a number')
   if (validatedObject >= threshold) {
     throw new ValidationError(
       errorText || `Validated number ${validatedObject} is not less than the threshold ${threshold}`
-    );
+    )
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -79,16 +79,15 @@ function lessThan(validatedObject, threshold, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-function greaterThan(validatedObject, threshold, errorText) {
-  number(validatedObject);
-  number(threshold, 'Threshold is not a number');
+export function greaterThan(validatedObject: any, threshold: number, errorText?: string) {
+  number(validatedObject)
+  number(threshold, 'Threshold is not a number')
   if (validatedObject <= threshold) {
     throw new ValidationError(
-      errorText ||
-        `Validated number ${validatedObject} is not greater than the threshold ${threshold}`
-    );
+      errorText || `Validated number ${validatedObject} is not greater than the threshold ${threshold}`
+    )
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -98,13 +97,11 @@ function greaterThan(validatedObject, threshold, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-function equal(validatedEntity, expectedEqualTo, errorText) {
+export function equal(validatedEntity: any, expectedEqualTo: any, errorText?: string) {
   if (validatedEntity !== expectedEqualTo) {
-    throw new ValidationError(
-      errorText || `Validated entity ${validatedEntity} is not equal to ${expectedEqualTo}`
-    );
+    throw new ValidationError(errorText || `Validated entity ${validatedEntity} is not equal to ${expectedEqualTo}`)
   }
-  return validatedEntity;
+  return validatedEntity
 }
 
 /**
@@ -113,12 +110,12 @@ function equal(validatedEntity, expectedEqualTo, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-function negativeNumber(validatedObject, errorText) {
-  number(validatedObject);
+export function negativeNumber(validatedObject: any, errorText?: string) {
+  number(validatedObject)
   if (validatedObject >= 0) {
-    throw new ValidationError(errorText || 'Validated number is not negative');
+    throw new ValidationError(errorText || 'Validated number is not negative')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -127,11 +124,11 @@ function negativeNumber(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {String} validatedObject
  */
-function string(validatedObject, errorText) {
+export function string(validatedObject: any, errorText?: string) {
   if (!_.isString(validatedObject)) {
-    throw new ValidationError(errorText || 'Validated object is not a string');
+    throw new ValidationError(errorText || 'Validated object is not a string')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -140,11 +137,11 @@ function string(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {boolean} validatedObject
  */
-function booleanTrue(validatedObject, errorText) {
+export function booleanTrue(validatedObject: any, errorText?: string) {
   if (!_.isBoolean(validatedObject) || !validatedObject) {
-    throw new ValidationError(errorText || 'Validated object is not True');
+    throw new ValidationError(errorText || 'Validated object is not True')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -153,11 +150,11 @@ function booleanTrue(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {boolean} validatedObject
  */
-function date(validatedEntity, errorText) {
+export function date(validatedEntity: any, errorText?: string) {
   if (!_.isDate(validatedEntity)) {
-    throw new ValidationError(errorText || 'Validated object is not Date');
+    throw new ValidationError(errorText || 'Validated object is not Date')
   }
-  return validatedEntity;
+  return validatedEntity
 }
 
 /**
@@ -166,16 +163,16 @@ function date(validatedEntity, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-function booleanNonStrict(validatedObject, errorText) {
+export function booleanNonStrict(validatedObject: any, errorText?: string) {
   if (!_.isBoolean(validatedObject)) {
     if (
       !_.isString(validatedObject) ||
       (validatedObject.toLowerCase() !== 'false' && validatedObject.toLowerCase() !== 'true')
     ) {
-      throw new ValidationError(errorText || 'Validated object is not Boolean');
+      throw new ValidationError(errorText || 'Validated object is not Boolean')
     }
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -184,11 +181,11 @@ function booleanNonStrict(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-function boolean_(validatedObject, errorText) {
+export function boolean_(validatedObject: any, errorText?: string) {
   if (!_.isBoolean(validatedObject)) {
-    throw new ValidationError(errorText || 'Validated object is not Boolean');
+    throw new ValidationError(errorText || 'Validated object is not Boolean')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -197,11 +194,11 @@ function boolean_(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {boolean} validatedObject
  */
-function booleanFalse(validatedObject, errorText) {
+export function booleanFalse(validatedObject: any, errorText?: string) {
   if (!_.isBoolean(validatedObject) || validatedObject) {
-    throw new ValidationError(errorText || 'Validated object is not False');
+    throw new ValidationError(errorText || 'Validated object is not False')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -210,11 +207,11 @@ function booleanFalse(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-function truthy(validatedObject, errorText) {
+export function truthy(validatedObject: any, errorText?: string) {
   if (!validatedObject) {
-    throw new ValidationError(errorText || 'Validated object is not truthy');
+    throw new ValidationError(errorText || 'Validated object is not truthy')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -223,11 +220,11 @@ function truthy(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-function falsy(validatedObject, errorText) {
+export function falsy(validatedObject: any, errorText?: string) {
   if (validatedObject) {
-    throw new ValidationError(errorText || 'Validated object is not falsy');
+    throw new ValidationError(errorText || 'Validated object is not falsy')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -236,11 +233,11 @@ function falsy(validatedObject, errorText) {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedEntity
  */
-function function_(validatedEntity, errorText) {
+export function function_(validatedEntity: any, errorText?: string) {
   if (!_.isFunction(validatedEntity)) {
-    throw new ValidationError(errorText || 'Validated entity is not a function');
+    throw new ValidationError(errorText || 'Validated entity is not a function')
   }
-  return validatedEntity;
+  return validatedEntity
 }
 
 /**
@@ -249,17 +246,17 @@ function function_(validatedEntity, errorText) {
  * @param {String[]} validatedProperties - names of properties which existence should be checked
  * @returns {*} validatedObject
  */
-function withProperties(validatedObject, validatedProperties) {
-  notNil(validatedObject);
+export function withProperties(validatedObject: any, validatedProperties: string[]) {
+  notNil(validatedObject)
 
   const undefinedProperties = _.filter(validatedProperties, function(property) {
-    return !validatedObject.hasOwnProperty(property);
-  });
+    return !validatedObject.hasOwnProperty(property)
+  })
 
   if (!_.isEmpty(undefinedProperties)) {
-    throw new ValidationError("Validated object doesn't have properties: " + undefinedProperties);
+    throw new ValidationError("Validated object doesn't have properties: " + undefinedProperties)
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -268,11 +265,11 @@ function withProperties(validatedObject, validatedProperties) {
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-function object_(validatedObject, errorText) {
+export function object_(validatedObject: any, errorText?: string) {
   if (!_.isObject(validatedObject)) {
-    throw new ValidationError(errorText || 'Validated object is not an object');
+    throw new ValidationError(errorText || 'Validated object is not an object')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -281,11 +278,11 @@ function object_(validatedObject, errorText) {
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-function array(validatedObject, errorText) {
+export function array(validatedObject: any, errorText?: string) {
   if (!Array.isArray(validatedObject)) {
-    throw new ValidationError(errorText || 'Validated entity is not an array');
+    throw new ValidationError(errorText || 'Validated entity is not an array')
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -295,13 +292,11 @@ function array(validatedObject, errorText) {
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-function instanceOf(validatedObject, expectedClass, errorText) {
+export function instanceOf(validatedObject: any, expectedClass: any, errorText?: string) {
   if (!(validatedObject instanceof expectedClass)) {
-    throw new ValidationError(
-      errorText || `Validated object is not an instance of ${expectedClass.name}`
-    );
+    throw new ValidationError(errorText || `Validated object is not an instance of ${expectedClass.name}`)
   }
-  return validatedObject;
+  return validatedObject
 }
 
 /**
@@ -311,42 +306,14 @@ function instanceOf(validatedObject, expectedClass, errorText) {
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-function inheritsFrom(validatedClass, expectedParentClass, errorText) {
+export function inheritsFrom(validatedClass: any, expectedParentClass: any, errorText?: string) {
   if (
     //fail-fast if it is nil
     !validatedClass ||
     //lenient check whether class directly or indirectly inherits from expected class
-    (!(validatedClass.prototype instanceof expectedParentClass) &&
-      validatedClass !== expectedParentClass)
+    (!(validatedClass.prototype instanceof expectedParentClass) && validatedClass !== expectedParentClass)
   ) {
-    throw new ValidationError(
-      errorText || `Validated class does not inherit from ${expectedParentClass.name}`
-    );
+    throw new ValidationError(errorText || `Validated class does not inherit from ${expectedParentClass.name}`)
   }
-  return validatedClass;
+  return validatedClass
 }
-
-module.exports = {
-  array,
-  boolean_,
-  booleanFalse,
-  booleanNonStrict,
-  booleanTrue,
-  date,
-  equal,
-  falsy,
-  function_,
-  greaterThan,
-  inheritsFrom,
-  instanceOf,
-  lessThan,
-  negativeNumber,
-  notEmpty,
-  notNil,
-  number,
-  object_,
-  positiveNumber,
-  string,
-  truthy,
-  withProperties
-};

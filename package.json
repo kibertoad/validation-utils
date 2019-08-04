@@ -1,6 +1,6 @@
 {
   "name": "validation-utils",
-  "version": "2.8.1",
+  "version": "3.0.0",
   "description": "Validation utilities",
   "license": "MIT",
   "maintainers": [
@@ -9,12 +9,15 @@
       "email": "kibertoad@gmail.com"
     }
   ],
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha ./test",
-    "test-coverage": "nyc npm test",
-    "lint": "eslint .",
+    "build": "del-cli dist/ && tsc",
+    "test": "jest --config=jest.config.json",
+    "test:ci": "npm run lint && npm run test:coverage",
+    "test:coverage": "jest --config=jest.config.json --coverage",
+    "lint": "eslint --format codeframe \"lib/**/*.ts\" \"test/**/*.ts\"",
     "prettier": "prettier --write \"{lib,test}/**/*.{js,ts}\"",
-    "test-travis": "npm run lint && nyc mocha --opts \"./mocha.opts\" test"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,33 +31,21 @@
   ],
   "homepage": "http://github.com/kibertoad/validation-utils",
   "dependencies": {
-    "lodash": "^4.17.14"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "@types/jest": "^24.0.16",
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^12.6.9",
+    "del-cli": "1.1.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^5.1.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
-    "prettier": "^1.18.2"
-  },
-  "nyc": {
-    "description": "test coverage",
-    "include": [
-      "lib/**"
-    ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ],
-    "cache": true,
-    "all": true,
-    "report-dir": "./build/reports/coverage",
-    "check-coverage": true,
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.3",
+    "ts-jest": "^24.0.2"
   }
 }

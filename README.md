@@ -11,17 +11,17 @@ Validation utils for Javascript that provide convenient way to throw a typed err
 Install the library with `npm install validation-utils`
 
 ```javascript
-var validate = require('validation-utils');
+const validate = require('validation-utils').validationHelper;
 
 function init (email) {
   this.email = validate.notEmpty(email); //will throw an error if email is not provided
 }
 ```
 
-#### ES6
+#### TypeScript
 
 ```javascript
-import * as validate from 'validation-utils';
+import validationHelper from 'validation-utils';
 ```
 
 ### Validators
@@ -60,7 +60,7 @@ $ npm test
 ### License (MIT)
 
 ```
-Copyright (c) 2017-2018 Igor Savin <kibertoad@gmail.com>
+Copyright (c) 2017-2019 Igor Savin <kibertoad@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
