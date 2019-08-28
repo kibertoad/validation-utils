@@ -3,6 +3,7 @@
 node_modules/
 README.md
 test/
+build/
 .nyc_output/
 coverage/
 jest.config.json
