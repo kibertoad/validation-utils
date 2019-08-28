@@ -1,5 +1,5 @@
 import ValidationError from './ValidationError'
-import * as _ from 'lodash'
+import { isEmpty, isNil, isFinite, isString, isBoolean, isFunction, isObject, isDate } from 'zoology'
 
 /**
  * Checks value not to be null or undefined
@@ -8,7 +8,7 @@ import * as _ from 'lodash'
  * @returns {*} validatedObject
  */
 export function notNil(validatedObject: any, errorText?: string) {
-  if (_.isNil(validatedObject)) {
+  if (isNil(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is null or undefined')
   }
   return validatedObject
@@ -21,7 +21,7 @@ export function notNil(validatedObject: any, errorText?: string) {
  * @returns {*} validatedObject
  */
 export function nil(validatedObject: any, errorText?: string) {
-  if (!_.isNil(validatedObject)) {
+  if (!isNil(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not null or undefined')
   }
   return validatedObject
@@ -34,7 +34,7 @@ export function nil(validatedObject: any, errorText?: string) {
  * @returns {*} validatedObject
  */
 export function notEmpty(validatedObject: any, errorText?: string) {
-  if (_.isEmpty(validatedObject)) {
+  if (isEmpty(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is empty')
   }
   return validatedObject
@@ -47,7 +47,7 @@ export function notEmpty(validatedObject: any, errorText?: string) {
  * @returns {number} validatedObject
  */
 export function number(validatedObject: any, errorText?: string) {
-  if (!_.isFinite(validatedObject)) {
+  if (!isFinite(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not a number')
   }
   return validatedObject
@@ -138,7 +138,7 @@ export function negativeNumber(validatedObject: any, errorText?: string) {
  * @returns {String} validatedObject
  */
 export function string(validatedObject: any, errorText?: string) {
-  if (!_.isString(validatedObject)) {
+  if (!isString(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not a string')
   }
   return validatedObject
@@ -151,7 +151,7 @@ export function string(validatedObject: any, errorText?: string) {
  * @returns {boolean} validatedObject
  */
 export function booleanTrue(validatedObject: any, errorText?: string) {
-  if (!_.isBoolean(validatedObject) || !validatedObject) {
+  if (!isBoolean(validatedObject) || !validatedObject) {
     throw new ValidationError(errorText || 'Validated object is not True')
   }
   return validatedObject
@@ -164,7 +164,7 @@ export function booleanTrue(validatedObject: any, errorText?: string) {
  * @returns {boolean} validatedObject
  */
 export function date(validatedEntity: any, errorText?: string) {
-  if (!_.isDate(validatedEntity)) {
+  if (!isDate(validatedEntity)) {
     throw new ValidationError(errorText || 'Validated object is not Date')
   }
   return validatedEntity
@@ -177,9 +177,9 @@ export function date(validatedEntity: any, errorText?: string) {
  * @returns {*} validatedObject
  */
 export function booleanNonStrict(validatedObject: any, errorText?: string) {
-  if (!_.isBoolean(validatedObject)) {
+  if (!isBoolean(validatedObject)) {
     if (
-      !_.isString(validatedObject) ||
+      !isString(validatedObject) ||
       (validatedObject.toLowerCase() !== 'false' && validatedObject.toLowerCase() !== 'true')
     ) {
       throw new ValidationError(errorText || 'Validated object is not Boolean')
@@ -195,7 +195,7 @@ export function booleanNonStrict(validatedObject: any, errorText?: string) {
  * @returns {*} validatedObject
  */
 export function boolean_(validatedObject: any, errorText?: string) {
-  if (!_.isBoolean(validatedObject)) {
+  if (!isBoolean(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not Boolean')
   }
   return validatedObject
@@ -208,7 +208,7 @@ export function boolean_(validatedObject: any, errorText?: string) {
  * @returns {boolean} validatedObject
  */
 export function booleanFalse(validatedObject: any, errorText?: string) {
-  if (!_.isBoolean(validatedObject) || validatedObject) {
+  if (!isBoolean(validatedObject) || validatedObject) {
     throw new ValidationError(errorText || 'Validated object is not False')
   }
   return validatedObject
@@ -247,7 +247,7 @@ export function falsy(validatedObject: any, errorText?: string) {
  * @returns {*} validatedEntity
  */
 export function function_(validatedEntity: any, errorText?: string) {
-  if (!_.isFunction(validatedEntity)) {
+  if (!isFunction(validatedEntity)) {
     throw new ValidationError(errorText || 'Validated entity is not a function')
   }
   return validatedEntity
@@ -262,11 +262,11 @@ export function function_(validatedEntity: any, errorText?: string) {
 export function withProperties(validatedObject: any, validatedProperties: string[]) {
   notNil(validatedObject)
 
-  const undefinedProperties = _.filter(validatedProperties, function(property) {
+  const undefinedProperties = validatedProperties.filter((property) => {
     return !validatedObject.hasOwnProperty(property)
   })
 
-  if (!_.isEmpty(undefinedProperties)) {
+  if (!isEmpty(undefinedProperties)) {
     throw new ValidationError("Validated object doesn't have properties: " + undefinedProperties)
   }
   return validatedObject
@@ -279,7 +279,7 @@ export function withProperties(validatedObject: any, validatedProperties: string
  * @returns {Object} validatedObject
  */
 export function object_(validatedObject: any, errorText?: string) {
-  if (!_.isObject(validatedObject)) {
+  if (!isObject(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not an object')
   }
   return validatedObject

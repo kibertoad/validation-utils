@@ -383,10 +383,6 @@ describe('ValidationHelper', () => {
       }).toThrow(/Validated object is empty/)
 
       expect(() => {
-        validationHelper.notEmpty(1)
-      }).toThrow(/Validated object is empty/)
-
-      expect(() => {
         validationHelper.notEmpty({})
       }).toThrow(/Validated object is empty/)
     })
@@ -396,6 +392,7 @@ describe('ValidationHelper', () => {
       validationHelper.notEmpty(' ')
       validationHelper.notEmpty('a')
       validationHelper.notEmpty([{}])
+      validationHelper.notEmpty(1)
     })
   })
 
