@@ -1,6 +1,6 @@
 {
   "name": "validation-utils",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Validation utilities",
   "license": "MIT",
   "maintainers": [
@@ -12,7 +12,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "del-cli dist/ && tsc",
+    "build": "tsc",
     "test": "jest --config=jest.config.json",
     "test:ci": "npm run lint && npm run test:coverage",
     "test:coverage": "jest --config=jest.config.json --coverage",
@@ -35,19 +35,18 @@
     "zoology": "^1.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
-    "@types/jest": "^24.0.18",
-    "@types/lodash": "^4.14.138",
-    "@types/node": "^10.14.16",
-    "del-cli": "1.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
+    "@types/jest": "^24.0.19",
+    "@types/lodash": "^4.14.144",
+    "@types/node": "^10.14.22",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^5.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
-    "typescript": "^3.5.3",
-    "ts-jest": "^24.0.2"
+    "typescript": "^3.6.4",
+    "ts-jest": "^24.1.0"
   },
   "files": [
     "README.md",
