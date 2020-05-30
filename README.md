@@ -4,7 +4,7 @@ Validation utils for Javascript that provide convenient way to throw a typed err
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
-  [![Linux Build][travis-image]][travis-url]
+  [![Linux Build][circleci-image]][circleci-url]
 
 ### Server-side usage
 
@@ -87,5 +87,5 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [npm-url]: https://npmjs.org/package/validation-utils
 [downloads-image]: https://img.shields.io/npm/dm/validation-utils.svg
 [downloads-url]: https://npmjs.org/package/validation-utils
-[travis-image]: https://img.shields.io/travis/kibertoad/validation-utils/master.svg?label=linux
-[travis-url]: https://travis-ci.org/kibertoad/validation-utils
+[circleci-image]: https://circleci.com/gh/kibertoad/validation-utils.svg?style=svg
+[circleci-url]: https://circleci.com/gh/kibertoad/validation-utils
