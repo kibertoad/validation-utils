@@ -6,7 +6,7 @@ Validation utils for Javascript that provide convenient way to throw a typed err
   [![NPM Downloads][downloads-image]][downloads-url]
   [![Linux Build][circleci-image]][circleci-url]
 
-### Server-side usage
+### Getting started
 
 Install the library with `npm install validation-utils`
 
@@ -51,12 +51,6 @@ import { validationHelper } from 'validation-utils';
 - **withProperties(entity, expectedProperties)** - check if entity has at least a given set of properties defined.
 
 All validators return validated value as a result.
-
-### Tests
-
-```sh
-$ npm test
-```
 
 ### License (MIT)
 
