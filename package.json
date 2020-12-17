@@ -1,6 +1,6 @@
 {
   "name": "validation-utils",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Validation utilities",
   "license": "MIT",
   "maintainers": [
@@ -28,6 +28,7 @@
   "keywords": [
     "common",
     "utilities",
+    "utils",
     "validation",
     "assertion",
     "validator",
