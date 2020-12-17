@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": false,
@@ -19,11 +19,12 @@
     "importHelpers": false,
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "forceConsistentCasingInFileNames": true
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "test"
   ]
 }
