@@ -1,6 +1,6 @@
 {
   "name": "validation-utils",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Validation utilities",
   "license": "MIT",
   "maintainers": [
@@ -29,7 +29,12 @@
     "common",
     "utilities",
     "validation",
-    "assertion"
+    "assertion",
+    "validator",
+    "validate",
+    "assert",
+    "null",
+    "type"
   ],
   "homepage": "http://github.com/kibertoad/validation-utils",
   "dependencies": {
