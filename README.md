@@ -1,9 +1,12 @@
 # validation-utils
 
-Validation utils for Javascript that provide convenient way to throw a typed error if some expected condition is not satisfied
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+![](https://github.com/kibertoad/validation-utils/workflows/unit-tests/badge.svg)
 
-  [![NPM Version][npm-image]][npm-url]
-  [![NPM Downloads][downloads-image]][downloads-url]
+Validation utils for Javascript that provide convenient way to throw a typed error if some expected condition is not satisfied.  
+
+Node.JS 6+ is supported.
 
 ### Getting started
 

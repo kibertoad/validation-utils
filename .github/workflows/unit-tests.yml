@@ -1,6 +1,6 @@
 ---
 
-name: Unit Tests
+name: unit-tests
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Unit Tests
+    name: unit-tests
 
     strategy:
       matrix:
