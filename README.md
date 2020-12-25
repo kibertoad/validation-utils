@@ -1,10 +1,12 @@
 # validation-utils
 
-Validation utils for Javascript that provide convenient way to throw a typed error if some expected condition is not satisfied
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+![](https://github.com/kibertoad/validation-utils/workflows/unit-tests/badge.svg)
 
-  [![NPM Version][npm-image]][npm-url]
-  [![NPM Downloads][downloads-image]][downloads-url]
-  [![Linux Build][circleci-image]][circleci-url]
+Validation utils for Javascript that provide convenient way to throw a typed error if some expected condition is not satisfied.  
+
+Node.JS 6+ is supported.
 
 ### Getting started
 
@@ -81,5 +83,3 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [npm-url]: https://npmjs.org/package/validation-utils
 [downloads-image]: https://img.shields.io/npm/dm/validation-utils.svg
 [downloads-url]: https://npmjs.org/package/validation-utils
-[circleci-image]: https://circleci.com/gh/kibertoad/validation-utils.svg?style=svg
-[circleci-url]: https://circleci.com/gh/kibertoad/validation-utils
