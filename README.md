@@ -3,6 +3,8 @@
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
 ![](https://github.com/kibertoad/validation-utils/workflows/unit-tests/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/kibertoad/validation-utils/badge.svg?branch=master)](https://coveralls.io/r/kibertoad/validation-utils?branch=master)
+
 
 Validation utils for Javascript that provide convenient way to throw a typed error if some expected condition is not satisfied.  
 
