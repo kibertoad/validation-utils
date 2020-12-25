@@ -8,3 +8,5 @@ export default class ValidationError extends Error {
     super(message)
   }
 }
+
+export { ValidationError }
