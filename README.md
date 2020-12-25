@@ -11,44 +11,44 @@ Validation utils for Javascript that provide convenient way to throw a typed err
 Install the library with `npm install validation-utils`
 
 ```javascript
-const validate = require('validation-utils').validationHelper;
+const { validateNotEmpty } = require('validation-utils');
 
 function init (email) {
-  this.email = validate.notEmpty(email); //will throw an error if email is not provided
+  this.email = validateNotEmpty(email); //will throw an error if email is not provided
 }
 ```
 
 #### TypeScript
 
 ```javascript
-import { validationHelper } from 'validation-utils';
+import { validateNotEmpty } from 'validation-utils';
 ```
 
 ### Validators
 
-- **array(entity [, errorText])** - check if entity is an array.
-- **boolean_(entity [, errorText])** - check if entity is a boolean.
-- **booleanNonStrict(entity [, errorText])** - check if entity is a boolean or a (case-insensitive) 'true' or 'false' string.
-- **booleanFalse(entity [, errorText])** - check if entity is a boolean with value False.
-- **booleanTrue(entity [, errorText])** - check if entity is a boolean with value True.
-- **date(entity [, errorText])** - check if entity is an instance of Date.
-- **equal(entity, expectedEqualEntity [, errorText])** - check if entity is equal to the expected one (compared with ===).
-- **falsy(entity [, errorText])** - check if entity is falsy.
-- **function_(entity [, errorText])** - check if entity is a function.
-- **inheritsFrom(entityClass, expectedParentClass [, errorText])** - check if class inherits from a given class.
-- **instanceOf(entity, expectedClass [, errorText])** - check if entity is an instance of a given class.
-- **notEmpty(entity [, errorText])** - check if entity is not an empty Object, String or Array.
-- **notNil(entity [, errorText])** - check if entity is not null or undefined.
-- **nil(entity [, errorText])** - check if entity is null or undefined.
-- **number(entity [, errorText])** - check if entity is a number.
-- **positiveNumber(entity [, errorText])** - check if entity is a positive number.
-- **negativeNumber(entity [, errorText])** - check if entity is a negative number.
-- **greaterThan(number, threshold [, errorText])** - check if entity is a number than is greater than the specified threshold.
-- **lessThan(number, threshold [, errorText])** - check if entity is a number than is less than the specified threshold.
-- **string(entity [, errorText])** - check if entity is a string.
-- **object_(entity [, errorText])** - check if entity is an object.
-- **truthy(entity [, errorText])** - check if entity is truthy.
-- **withProperties(entity, expectedProperties)** - check if entity has at least a given set of properties defined.
+- **validateArray(entity [, errorText])** - check if entity is an array.
+- **validateBoolean(entity [, errorText])** - check if entity is a boolean.
+- **validateBooleanNonStrict(entity [, errorText])** - check if entity is a boolean or a (case-insensitive) 'true' or 'false' string.
+- **validateBooleanFalse(entity [, errorText])** - check if entity is a boolean with value False.
+- **validateBooleanTrue(entity [, errorText])** - check if entity is a boolean with value True.
+- **validateDate(entity [, errorText])** - check if entity is an instance of Date.
+- **validateEqual(entity, expectedEqualEntity [, errorText])** - check if entity is equal to the expected one (compared with ===).
+- **validateFalsy(entity [, errorText])** - check if entity is falsy.
+- **validateFunction(entity [, errorText])** - check if entity is a function.
+- **validateInheritsFrom(entityClass, expectedParentClass [, errorText])** - check if class inherits from a given class.
+- **validateInstanceOf(entity, expectedClass [, errorText])** - check if entity is an instance of a given class.
+- **validateNotEmpty(entity [, errorText])** - check if entity is not an empty Object, String or Array.
+- **validateNotNil(entity [, errorText])** - check if entity is not null or undefined.
+- **validateNil(entity [, errorText])** - check if entity is null or undefined.
+- **validateNumber(entity [, errorText])** - check if entity is a number.
+- **validatePositiveNumber(entity [, errorText])** - check if entity is a positive number.
+- **validateNegativeNumber(entity [, errorText])** - check if entity is a negative number.
+- **validateGreaterThan(number, threshold [, errorText])** - check if entity is a number than is greater than the specified threshold.
+- **validateLessThan(number, threshold [, errorText])** - check if entity is a number than is less than the specified threshold.
+- **validateString(entity [, errorText])** - check if entity is a string.
+- **validateObject(entity [, errorText])** - check if entity is an object.
+- **validateTruthy(entity [, errorText])** - check if entity is truthy.
+- **validateHasProperties(entity, expectedProperties)** - check if entity has at least a given set of properties defined.
 
 All validators return validated value as a result.
 

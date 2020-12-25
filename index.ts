@@ -1,4 +1,27 @@
-import * as validationHelper from './lib/validation.helper'
-import ValidationError from './lib/ValidationError'
+export {
+  validateArray,
+  validateBoolean,
+  validateBooleanFalse,
+  validateBooleanNonStrict,
+  validateBooleanTrue,
+  validateDate,
+  validateEqual,
+  validateFalsy,
+  validateFunction,
+  validateGreaterThan,
+  validateInheritsFrom,
+  validateInstanceOf,
+  validateLessThan,
+  validateNegativeNumber,
+  validateNil,
+  validateNotEmpty,
+  validateNotNil,
+  validateNumber,
+  validateObject,
+  validatePositiveNumber,
+  validateString,
+  validateTruthy,
+  validateHasProperties,
+} from './lib/validation.helper'
 
-export { ValidationError, validationHelper }
+export { ValidationError } from './lib/ValidationError'

@@ -7,7 +7,7 @@ import { isEmpty, isNil, isFinite, isString, isBoolean, isFunction, isObject, is
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function notNil<T>(validatedObject: T, errorText?: string): T {
+export function validateNotNil<T>(validatedObject: T, errorText?: string): T {
   if (isNil(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is null or undefined')
   }
@@ -20,7 +20,7 @@ export function notNil<T>(validatedObject: T, errorText?: string): T {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function nil<T>(validatedObject: T, errorText?: string): T {
+export function validateNil<T>(validatedObject: T, errorText?: string): T {
   if (!isNil(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not null or undefined')
   }
@@ -33,7 +33,7 @@ export function nil<T>(validatedObject: T, errorText?: string): T {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function notEmpty<T>(validatedObject: T, errorText?: string): T {
+export function validateNotEmpty<T>(validatedObject: T, errorText?: string): T {
   if (isEmpty(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is empty')
   }
@@ -46,7 +46,7 @@ export function notEmpty<T>(validatedObject: T, errorText?: string): T {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function number(validatedObject: any, errorText?: string): number {
+export function validateNumber(validatedObject: any, errorText?: string): number {
   if (!isFinite(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not a number')
   }
@@ -59,8 +59,8 @@ export function number(validatedObject: any, errorText?: string): number {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function positiveNumber(validatedObject: any, errorText?: string): number {
-  number(validatedObject)
+export function validatePositiveNumber(validatedObject: any, errorText?: string): number {
+  validateNumber(validatedObject)
   if (validatedObject <= 0) {
     throw new ValidationError(errorText || 'Validated number is not positive')
   }
@@ -74,9 +74,9 @@ export function positiveNumber(validatedObject: any, errorText?: string): number
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function lessThan(validatedObject: any, threshold: number, errorText?: string): number {
-  number(validatedObject)
-  number(threshold, 'Threshold is not a number')
+export function validateLessThan(validatedObject: any, threshold: number, errorText?: string): number {
+  validateNumber(validatedObject)
+  validateNumber(threshold, 'Threshold is not a number')
   if (validatedObject >= threshold) {
     throw new ValidationError(
       errorText || `Validated number ${validatedObject} is not less than the threshold ${threshold}`
@@ -92,9 +92,9 @@ export function lessThan(validatedObject: any, threshold: number, errorText?: st
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function greaterThan(validatedObject: any, threshold: number, errorText?: string): number {
-  number(validatedObject)
-  number(threshold, 'Threshold is not a number')
+export function validateGreaterThan(validatedObject: any, threshold: number, errorText?: string): number {
+  validateNumber(validatedObject)
+  validateNumber(threshold, 'Threshold is not a number')
   if (validatedObject <= threshold) {
     throw new ValidationError(
       errorText || `Validated number ${validatedObject} is not greater than the threshold ${threshold}`
@@ -110,7 +110,7 @@ export function greaterThan(validatedObject: any, threshold: number, errorText?:
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function equal<T>(validatedEntity: any, expectedEqualTo: T, errorText?: string): T {
+export function validateEqual<T>(validatedEntity: any, expectedEqualTo: T, errorText?: string): T {
   if (validatedEntity !== expectedEqualTo) {
     throw new ValidationError(errorText || `Validated entity ${validatedEntity} is not equal to ${expectedEqualTo}`)
   }
@@ -123,8 +123,8 @@ export function equal<T>(validatedEntity: any, expectedEqualTo: T, errorText?: s
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function negativeNumber(validatedObject: any, errorText?: string): number {
-  number(validatedObject)
+export function validateNegativeNumber(validatedObject: any, errorText?: string): number {
+  validateNumber(validatedObject)
   if (validatedObject >= 0) {
     throw new ValidationError(errorText || 'Validated number is not negative')
   }
@@ -137,7 +137,7 @@ export function negativeNumber(validatedObject: any, errorText?: string): number
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {String} validatedObject
  */
-export function string(validatedObject: any, errorText?: string): string {
+export function validateString(validatedObject: any, errorText?: string): string {
   if (!isString(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not a string')
   }
@@ -150,7 +150,7 @@ export function string(validatedObject: any, errorText?: string): string {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {boolean} validatedObject
  */
-export function booleanTrue(validatedObject: any, errorText?: string): boolean {
+export function validateBooleanTrue(validatedObject: any, errorText?: string): boolean {
   if (!isBoolean(validatedObject) || !validatedObject) {
     throw new ValidationError(errorText || 'Validated object is not True')
   }
@@ -163,7 +163,7 @@ export function booleanTrue(validatedObject: any, errorText?: string): boolean {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {boolean} validatedObject
  */
-export function date(validatedEntity: any, errorText?: string): Date {
+export function validateDate(validatedEntity: any, errorText?: string): Date {
   if (!isDate(validatedEntity)) {
     throw new ValidationError(errorText || 'Validated object is not Date')
   }
@@ -176,7 +176,7 @@ export function date(validatedEntity: any, errorText?: string): Date {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function booleanNonStrict(validatedObject: any, errorText?: string): boolean | string {
+export function validateBooleanNonStrict(validatedObject: any, errorText?: string): boolean | string {
   if (!isBoolean(validatedObject)) {
     if (
       !isString(validatedObject) ||
@@ -194,7 +194,7 @@ export function booleanNonStrict(validatedObject: any, errorText?: string): bool
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function boolean_(validatedObject: any, errorText?: string): boolean {
+export function validateBoolean(validatedObject: any, errorText?: string): boolean {
   if (!isBoolean(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not Boolean')
   }
@@ -207,7 +207,7 @@ export function boolean_(validatedObject: any, errorText?: string): boolean {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {boolean} validatedObject
  */
-export function booleanFalse(validatedObject: any, errorText?: string): boolean {
+export function validateBooleanFalse(validatedObject: any, errorText?: string): boolean {
   if (!isBoolean(validatedObject) || validatedObject) {
     throw new ValidationError(errorText || 'Validated object is not False')
   }
@@ -220,7 +220,7 @@ export function booleanFalse(validatedObject: any, errorText?: string): boolean 
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function truthy<T>(validatedObject: T, errorText?: string): T {
+export function validateTruthy<T>(validatedObject: T, errorText?: string): T {
   if (!validatedObject) {
     throw new ValidationError(errorText || 'Validated object is not truthy')
   }
@@ -233,7 +233,7 @@ export function truthy<T>(validatedObject: T, errorText?: string): T {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function falsy<T>(validatedObject: T, errorText?: string): T {
+export function validateFalsy<T>(validatedObject: T, errorText?: string): T {
   if (validatedObject) {
     throw new ValidationError(errorText || 'Validated object is not falsy')
   }
@@ -247,7 +247,7 @@ export function falsy<T>(validatedObject: T, errorText?: string): T {
  * @returns {*} validatedEntity
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export function function_(validatedEntity: any, errorText?: string): Function {
+export function validateFunction(validatedEntity: any, errorText?: string): Function {
   if (!isFunction(validatedEntity)) {
     throw new ValidationError(errorText || 'Validated entity is not a function')
   }
@@ -260,8 +260,8 @@ export function function_(validatedEntity: any, errorText?: string): Function {
  * @param {String[]} validatedProperties - names of properties which existence should be checked
  * @returns {*} validatedObject
  */
-export function withProperties(validatedObject: any, validatedProperties: string[]): any {
-  notNil(validatedObject)
+export function validateHasProperties(validatedObject: any, validatedProperties: string[]): any {
+  validateNotNil(validatedObject)
 
   const undefinedProperties = validatedProperties.filter((property) => {
     return !Object.prototype.hasOwnProperty.call(validatedObject, property)
@@ -279,7 +279,7 @@ export function withProperties(validatedObject: any, validatedProperties: string
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-export function object_<T>(validatedObject: T, errorText?: string): T {
+export function validateObject<T>(validatedObject: T, errorText?: string): T {
   if (!isObject(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not an object')
   }
@@ -292,7 +292,7 @@ export function object_<T>(validatedObject: T, errorText?: string): T {
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-export function array(validatedObject: any, errorText?: string): any[] {
+export function validateArray(validatedObject: any, errorText?: string): any[] {
   if (!Array.isArray(validatedObject)) {
     throw new ValidationError(errorText || 'Validated entity is not an array')
   }
@@ -306,7 +306,7 @@ export function array(validatedObject: any, errorText?: string): any[] {
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-export function instanceOf<T>(validatedObject: T, expectedClass: any, errorText?: string): T {
+export function validateInstanceOf<T>(validatedObject: T, expectedClass: any, errorText?: string): T {
   if (!(validatedObject instanceof expectedClass)) {
     throw new ValidationError(errorText || `Validated object is not an instance of ${expectedClass.name}`)
   }
@@ -320,7 +320,7 @@ export function instanceOf<T>(validatedObject: T, expectedClass: any, errorText?
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-export function inheritsFrom(validatedClass: any, expectedParentClass: any, errorText?: string): any {
+export function validateInheritsFrom(validatedClass: any, expectedParentClass: any, errorText?: string): any {
   if (
     //fail-fast if it is nil
     !validatedClass ||

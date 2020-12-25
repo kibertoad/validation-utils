@@ -2,529 +2,529 @@ import ValidationError from '../lib/ValidationError'
 import * as validationHelper from '../lib/validation.helper'
 
 describe('ValidationHelper', () => {
-  describe('withProperties', () => {
+  describe('validateHasProperties', () => {
     it('throw error on undefined properties', () => {
       expect(() => {
-        validationHelper.withProperties({ a: 'a', b: 'b', c: 'c' }, ['b', 'd', 'e'])
+        validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, ['b', 'd', 'e'])
       }).toThrow(/Validated object doesn't have properties: d,e/)
     })
 
     it('do not throw error on defined properties', () => {
-      validationHelper.withProperties({ a: 'a', b: 'b', c: 'c' }, ['a', 'b', 'c'])
+      validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, ['a', 'b', 'c'])
 
-      validationHelper.withProperties({ a: 'a', b: 'b', c: 'c' }, ['b'])
+      validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, ['b'])
 
-      validationHelper.withProperties({ a: 'a', b: 'b', c: 'c' }, [])
+      validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, [])
     })
   })
 
-  describe('truthy', () => {
+  describe('validateTruthy', () => {
     it('throw error on not truthy values', () => {
       expect(() => {
-        validationHelper.truthy(false)
+        validationHelper.validateTruthy(false)
       }).toThrow(/Validated object is not truthy/)
 
       expect(() => {
-        validationHelper.truthy(undefined)
+        validationHelper.validateTruthy(undefined)
       }).toThrow(/Validated object is not truthy/)
 
       expect(() => {
-        validationHelper.truthy(NaN)
+        validationHelper.validateTruthy(NaN)
       }).toThrow(/Validated object is not truthy/)
 
       expect(() => {
-        validationHelper.truthy(0)
+        validationHelper.validateTruthy(0)
       }).toThrow(/Validated object is not truthy/)
 
       expect(() => {
-        validationHelper.truthy('')
+        validationHelper.validateTruthy('')
       }).toThrow(/Validated object is not truthy/)
     })
 
     it('do not throw error on truthy values', () => {
-      validationHelper.truthy(true)
-      validationHelper.truthy({})
-      validationHelper.truthy(1)
-      validationHelper.truthy(-1)
-      validationHelper.truthy(' ')
-      validationHelper.truthy('a')
+      validationHelper.validateTruthy(true)
+      validationHelper.validateTruthy({})
+      validationHelper.validateTruthy(1)
+      validationHelper.validateTruthy(-1)
+      validationHelper.validateTruthy(' ')
+      validationHelper.validateTruthy('a')
     })
   })
 
-  describe('falsy', () => {
+  describe('validateFalsy', () => {
     it('throw error on not falsy values', () => {
       expect(() => {
-        validationHelper.falsy(true)
+        validationHelper.validateFalsy(true)
       }).toThrow(/Validated object is not falsy/)
 
       expect(() => {
-        validationHelper.falsy({})
+        validationHelper.validateFalsy({})
       }).toThrow(/Validated object is not falsy/)
 
       expect(() => {
-        validationHelper.falsy(1)
+        validationHelper.validateFalsy(1)
       }).toThrow(/Validated object is not falsy/)
 
       expect(() => {
-        validationHelper.falsy(-1)
+        validationHelper.validateFalsy(-1)
       }).toThrow(/Validated object is not falsy/)
 
       expect(() => {
-        validationHelper.falsy(' ')
+        validationHelper.validateFalsy(' ')
       }).toThrow(/Validated object is not falsy/)
 
       expect(() => {
-        validationHelper.falsy('a')
+        validationHelper.validateFalsy('a')
       }).toThrow(/Validated object is not falsy/)
     })
 
     it('do not throw error on falsy values', () => {
-      validationHelper.falsy(false)
-      validationHelper.falsy(undefined)
-      validationHelper.falsy(NaN)
-      validationHelper.falsy(0)
-      validationHelper.falsy('')
+      validationHelper.validateFalsy(false)
+      validationHelper.validateFalsy(undefined)
+      validationHelper.validateFalsy(NaN)
+      validationHelper.validateFalsy(0)
+      validationHelper.validateFalsy('')
     })
   })
 
-  describe('booleanTrue', () => {
+  describe('validateBooleanTrue', () => {
     it('throw error on not True values', () => {
       expect(() => {
-        validationHelper.booleanTrue(false)
+        validationHelper.validateBooleanTrue(false)
       }).toThrow(/Validated object is not True/)
 
       expect(() => {
-        validationHelper.booleanTrue({})
+        validationHelper.validateBooleanTrue({})
       }).toThrow(/Validated object is not True/)
 
       expect(() => {
-        validationHelper.booleanTrue(1)
+        validationHelper.validateBooleanTrue(1)
       }).toThrow(/Validated object is not True/)
     })
 
     it('do not throw error on True values', () => {
-      validationHelper.booleanTrue(true)
+      validationHelper.validateBooleanTrue(true)
     })
   })
 
-  describe('date', () => {
+  describe('validateDate', () => {
     it('throw error on not Date values', () => {
       expect(() => {
-        validationHelper.date(false)
+        validationHelper.validateDate(false)
       }).toThrow(/Validated object is not Date/)
 
       expect(() => {
-        validationHelper.date({})
+        validationHelper.validateDate({})
       }).toThrow(/Validated object is not Date/)
 
       expect(() => {
-        validationHelper.date(1)
+        validationHelper.validateDate(1)
       }).toThrow(/Validated object is not Date/)
     })
 
     it('do not throw error on Date values', () => {
-      validationHelper.date(new Date())
+      validationHelper.validateDate(new Date())
     })
   })
 
-  describe('booleanNonStrict', () => {
+  describe('validateBoolean', () => {
     it('throw error on not non-strict boolean values', () => {
       expect(() => {
-        validationHelper.boolean_('0')
+        validationHelper.validateBoolean('0')
       }).toThrow(/Validated object is not Boolean/)
 
       expect(() => {
-        validationHelper.boolean_({})
+        validationHelper.validateBoolean({})
       }).toThrow(/Validated object is not Boolean/)
 
       expect(() => {
-        validationHelper.boolean_('tru')
+        validationHelper.validateBoolean('tru')
       }).toThrow(/Validated object is not Boolean/)
 
       expect(() => {
-        validationHelper.boolean_('true')
+        validationHelper.validateBoolean('true')
       }).toThrow(/Validated object is not Boolean/)
 
       expect(() => {
-        validationHelper.boolean_('TRUE')
+        validationHelper.validateBoolean('TRUE')
       }).toThrow(/Validated object is not Boolean/)
 
       expect(() => {
-        validationHelper.boolean_('false')
+        validationHelper.validateBoolean('false')
       }).toThrow(/Validated object is not Boolean/)
 
       expect(() => {
-        validationHelper.boolean_('FALSE')
+        validationHelper.validateBoolean('FALSE')
       }).toThrow(/Validated object is not Boolean/)
     })
 
     it('do not throw error on boolean values', () => {
-      validationHelper.boolean_(true)
-      validationHelper.boolean_(false)
+      validationHelper.validateBoolean(true)
+      validationHelper.validateBoolean(false)
     })
   })
 
-  describe('booleanNonStrict', () => {
+  describe('validateBooleanNonStrict', () => {
     it('throw error on not non-strict boolean values', () => {
       expect(() => {
-        validationHelper.booleanNonStrict('0')
+        validationHelper.validateBooleanNonStrict('0')
       }).toThrow(/Validated object is not Boolean/)
 
       expect(() => {
-        validationHelper.booleanNonStrict({})
+        validationHelper.validateBooleanNonStrict({})
       }).toThrow(/Validated object is not Boolean/)
 
       expect(() => {
-        validationHelper.booleanNonStrict('tru')
+        validationHelper.validateBooleanNonStrict('tru')
       }).toThrow(/Validated object is not Boolean/)
     })
 
     it('do not throw error on non-strict boolean values', () => {
-      validationHelper.booleanNonStrict(true)
-      validationHelper.booleanNonStrict(false)
-      validationHelper.booleanNonStrict('true')
-      validationHelper.booleanNonStrict('TRUE')
-      validationHelper.booleanNonStrict('false')
-      validationHelper.booleanNonStrict('FALSE')
+      validationHelper.validateBooleanNonStrict(true)
+      validationHelper.validateBooleanNonStrict(false)
+      validationHelper.validateBooleanNonStrict('true')
+      validationHelper.validateBooleanNonStrict('TRUE')
+      validationHelper.validateBooleanNonStrict('false')
+      validationHelper.validateBooleanNonStrict('FALSE')
     })
   })
 
-  describe('booleanFalse', () => {
+  describe('validateBooleanFalse', () => {
     it('throw error on not False values', () => {
       expect(() => {
-        validationHelper.booleanFalse(true)
+        validationHelper.validateBooleanFalse(true)
       }).toThrow(/Validated object is not False/)
 
       expect(() => {
-        validationHelper.booleanFalse(undefined)
+        validationHelper.validateBooleanFalse(undefined)
       }).toThrow(/Validated object is not False/)
 
       expect(() => {
-        validationHelper.booleanFalse(null)
+        validationHelper.validateBooleanFalse(null)
       }).toThrow(/Validated object is not False/)
 
       expect(() => {
-        validationHelper.booleanFalse(NaN)
+        validationHelper.validateBooleanFalse(NaN)
       }).toThrow(/Validated object is not False/)
 
       expect(() => {
-        validationHelper.booleanFalse(0)
+        validationHelper.validateBooleanFalse(0)
       }).toThrow(/Validated object is not False/)
 
       expect(() => {
-        validationHelper.booleanFalse(1)
+        validationHelper.validateBooleanFalse(1)
       }).toThrow(/Validated object is not False/)
     })
 
     it('do not throw error on False values', () => {
-      validationHelper.booleanFalse(false)
+      validationHelper.validateBooleanFalse(false)
     })
   })
 
-  describe('number', () => {
+  describe('validateNumber', () => {
     it('throw error on not a Number value', () => {
       expect(() => {
-        validationHelper.number({})
+        validationHelper.validateNumber({})
       }).toThrow(/Validated object is not a number/)
 
       expect(() => {
-        validationHelper.number(undefined)
+        validationHelper.validateNumber(undefined)
       }).toThrow(/Validated object is not a number/)
 
       expect(() => {
-        validationHelper.number(NaN)
+        validationHelper.validateNumber(NaN)
       }).toThrow(/Validated object is not a number/)
 
       expect(() => {
-        validationHelper.number(null)
+        validationHelper.validateNumber(null)
       }).toThrow(/Validated object is not a number/)
 
       expect(() => {
-        validationHelper.number('1')
+        validationHelper.validateNumber('1')
       }).toThrow(/Validated object is not a number/)
     })
 
     it('do not throw error on Number value', () => {
-      validationHelper.number(-1)
-      validationHelper.number(0)
-      validationHelper.number(1)
-      validationHelper.number(1.5)
+      validationHelper.validateNumber(-1)
+      validationHelper.validateNumber(0)
+      validationHelper.validateNumber(1)
+      validationHelper.validateNumber(1.5)
     })
   })
 
-  describe('positiveNumber', () => {
+  describe('validatePositiveNumber', () => {
     it('throw error on not a positive number value', () => {
       expect(() => {
-        validationHelper.positiveNumber(0)
+        validationHelper.validatePositiveNumber(0)
       }).toThrow(/Validated number is not positive/)
 
       expect(() => {
-        validationHelper.positiveNumber(-1)
+        validationHelper.validatePositiveNumber(-1)
       }).toThrow(/Validated number is not positive/)
 
       expect(() => {
-        validationHelper.positiveNumber(NaN)
+        validationHelper.validatePositiveNumber(NaN)
       }).toThrow(/Validated object is not a number/)
     })
 
     it('do not throw error on a positive number value', () => {
-      validationHelper.positiveNumber(0.1)
-      validationHelper.positiveNumber(1)
-      validationHelper.positiveNumber(1.5)
+      validationHelper.validatePositiveNumber(0.1)
+      validationHelper.validatePositiveNumber(1)
+      validationHelper.validatePositiveNumber(1.5)
     })
   })
 
-  describe('negativeNumber', () => {
+  describe('validateNegativeNumber', () => {
     it('throw error on not a negative number value', () => {
       expect(() => {
-        validationHelper.negativeNumber(0)
+        validationHelper.validateNegativeNumber(0)
       }).toThrow(/Validated number is not negative/)
 
       expect(() => {
-        validationHelper.negativeNumber(1)
+        validationHelper.validateNegativeNumber(1)
       }).toThrow(/Validated number is not negative/)
 
       expect(() => {
-        validationHelper.negativeNumber(NaN)
+        validationHelper.validateNegativeNumber(NaN)
       }).toThrow(/Validated object is not a number/)
     })
 
     it('do not throw error on a negative number value', () => {
-      validationHelper.negativeNumber(-0.1)
-      validationHelper.negativeNumber(-1)
-      validationHelper.negativeNumber(-1.5)
+      validationHelper.validateNegativeNumber(-0.1)
+      validationHelper.validateNegativeNumber(-1)
+      validationHelper.validateNegativeNumber(-1.5)
     })
   })
 
-  describe('notNil', () => {
+  describe('validateNotNil', () => {
     it('throw error on null or undefined', () => {
       expect(() => {
-        validationHelper.notNil(null)
+        validationHelper.validateNotNil(null)
       }).toThrow(/Validated object is null or undefined/)
 
       expect(() => {
-        validationHelper.notNil(undefined)
+        validationHelper.validateNotNil(undefined)
       }).toThrow(/Validated object is null or undefined/)
     })
 
     it('do not throw error on not a null or undefined', () => {
-      validationHelper.notNil(1)
-      validationHelper.notNil(0)
-      validationHelper.notNil(-1)
-      validationHelper.notNil({})
-      validationHelper.notNil('')
-      validationHelper.notNil('a')
-      validationHelper.notNil(true)
-      validationHelper.notNil(false)
+      validationHelper.validateNotNil(1)
+      validationHelper.validateNotNil(0)
+      validationHelper.validateNotNil(-1)
+      validationHelper.validateNotNil({})
+      validationHelper.validateNotNil('')
+      validationHelper.validateNotNil('a')
+      validationHelper.validateNotNil(true)
+      validationHelper.validateNotNil(false)
     })
   })
 
-  describe('nil', () => {
+  describe('validateNil', () => {
     it('throw error on not a null or undefined', () => {
       expect(() => {
-        validationHelper.nil(1)
+        validationHelper.validateNil(1)
       }).toThrow(/Validated object is not null or undefined/)
 
       expect(() => {
-        validationHelper.nil(0)
+        validationHelper.validateNil(0)
       }).toThrow(/Validated object is not null or undefined/)
 
       expect(() => {
-        validationHelper.nil(-1)
+        validationHelper.validateNil(-1)
       }).toThrow(/Validated object is not null or undefined/)
 
       expect(() => {
-        validationHelper.nil({})
+        validationHelper.validateNil({})
       }).toThrow(/Validated object is not null or undefined/)
 
       expect(() => {
-        validationHelper.nil('')
+        validationHelper.validateNil('')
       }).toThrow(/Validated object is not null or undefined/)
 
       expect(() => {
-        validationHelper.nil('a')
+        validationHelper.validateNil('a')
       }).toThrow(/Validated object is not null or undefined/)
 
       expect(() => {
-        validationHelper.nil(true)
+        validationHelper.validateNil(true)
       }).toThrow(/Validated object is not null or undefined/)
 
       expect(() => {
-        validationHelper.nil(false)
+        validationHelper.validateNil(false)
       }).toThrow(/Validated object is not null or undefined/)
     })
 
     it('do not throw error on null or undefined', () => {
-      validationHelper.nil(null)
-      validationHelper.nil(undefined)
+      validationHelper.validateNil(null)
+      validationHelper.validateNil(undefined)
     })
   })
 
-  describe('notEmpty', () => {
+  describe('validateNotEmpty', () => {
     it('throw error on empty object', () => {
       expect(() => {
-        validationHelper.notEmpty([])
+        validationHelper.validateNotEmpty([])
       }).toThrow(/Validated object is empty/)
 
       expect(() => {
-        validationHelper.notEmpty('')
+        validationHelper.validateNotEmpty('')
       }).toThrow(/Validated object is empty/)
 
       expect(() => {
-        validationHelper.notEmpty(new Set())
+        validationHelper.validateNotEmpty(new Set())
       }).toThrow(/Validated object is empty/)
 
       expect(() => {
-        validationHelper.notEmpty(null)
+        validationHelper.validateNotEmpty(null)
       }).toThrow(/Validated object is empty/)
 
       expect(() => {
-        validationHelper.notEmpty(undefined)
+        validationHelper.validateNotEmpty(undefined)
       }).toThrow(/Validated object is empty/)
 
       expect(() => {
-        validationHelper.notEmpty({})
+        validationHelper.validateNotEmpty({})
       }).toThrow(/Validated object is empty/)
     })
 
     it('do not throw error on a not empty object', () => {
-      validationHelper.notEmpty({ a: '' })
-      validationHelper.notEmpty(' ')
-      validationHelper.notEmpty('a')
-      validationHelper.notEmpty([{}])
-      validationHelper.notEmpty(1)
+      validationHelper.validateNotEmpty({ a: '' })
+      validationHelper.validateNotEmpty(' ')
+      validationHelper.validateNotEmpty('a')
+      validationHelper.validateNotEmpty([{}])
+      validationHelper.validateNotEmpty(1)
     })
   })
 
-  describe('string', () => {
+  describe('validateString', () => {
     it('throw error on not a string', () => {
       expect(() => {
-        validationHelper.string({})
+        validationHelper.validateString({})
       }).toThrow(/Validated object is not a string/)
 
       expect(() => {
-        validationHelper.string(1)
+        validationHelper.validateString(1)
       }).toThrow(/Validated object is not a string/)
 
       expect(() => {
-        validationHelper.string(true)
+        validationHelper.validateString(true)
       }).toThrow(/Validated object is not a string/)
 
       expect(() => {
-        validationHelper.string([])
+        validationHelper.validateString([])
       }).toThrow(/Validated object is not a string/)
 
       expect(() => {
-        validationHelper.string(null)
+        validationHelper.validateString(null)
       }).toThrow(/Validated object is not a string/)
 
       expect(() => {
-        validationHelper.string(undefined)
+        validationHelper.validateString(undefined)
       }).toThrow(/Validated object is not a string/)
     })
 
     it('do not throw error on a string', () => {
-      validationHelper.string('')
-      validationHelper.string(' ')
-      validationHelper.string('a')
-      validationHelper.string('1')
+      validationHelper.validateString('')
+      validationHelper.validateString(' ')
+      validationHelper.validateString('a')
+      validationHelper.validateString('1')
     })
   })
 
-  describe('object', () => {
+  describe('validateObject', () => {
     it('throw error on not an object', () => {
       expect(() => {
-        validationHelper.object_('s')
+        validationHelper.validateObject('s')
       }).toThrow(/Validated object is not an object/)
 
       expect(() => {
-        validationHelper.object_(1)
+        validationHelper.validateObject(1)
       }).toThrow(/Validated object is not an object/)
 
       expect(() => {
-        validationHelper.object_(true)
+        validationHelper.validateObject(true)
       }).toThrow(/Validated object is not an object/)
 
       expect(() => {
-        validationHelper.object_(null)
+        validationHelper.validateObject(null)
       }).toThrow(/Validated object is not an object/)
 
       expect(() => {
-        validationHelper.object_(undefined)
+        validationHelper.validateObject(undefined)
       }).toThrow(/Validated object is not an object/)
     })
 
     it('do not throw error on an object', () => {
-      validationHelper.object_({})
-      validationHelper.object_({ a: 'a' })
+      validationHelper.validateObject({})
+      validationHelper.validateObject({ a: 'a' })
     })
   })
 
-  describe('array', () => {
+  describe('validateArray', () => {
     it('throw error on not an array', () => {
       const expectedError = /Validated entity is not an array/
 
       expect(() => {
-        validationHelper.array('s')
+        validationHelper.validateArray('s')
       }).toThrow(expectedError)
 
       expect(() => {
-        validationHelper.array(1)
+        validationHelper.validateArray(1)
       }).toThrow(expectedError)
 
       expect(() => {
-        validationHelper.array(true)
+        validationHelper.validateArray(true)
       }).toThrow(expectedError)
 
       expect(() => {
-        validationHelper.array(null)
+        validationHelper.validateArray(null)
       }).toThrow(expectedError)
 
       expect(() => {
-        validationHelper.array(undefined)
+        validationHelper.validateArray(undefined)
       }).toThrow(expectedError)
     })
 
     it('do not throw error on an array', () => {
-      validationHelper.array([])
-      validationHelper.array([{ a: 'a' }])
-      validationHelper.array(['a'])
+      validationHelper.validateArray([])
+      validationHelper.validateArray([{ a: 'a' }])
+      validationHelper.validateArray(['a'])
     })
   })
 
-  describe('function_', () => {
+  describe('validateFunction', () => {
     it('throw error on not a function', () => {
       const expectedError = /Validated entity is not a function/
 
       expect(() => {
-        validationHelper.function_('s')
+        validationHelper.validateFunction('s')
       }).toThrow(expectedError)
 
       expect(() => {
-        validationHelper.function_(1)
+        validationHelper.validateFunction(1)
       }).toThrow(expectedError)
 
       expect(() => {
-        validationHelper.function_(true)
+        validationHelper.validateFunction(true)
       }).toThrow(expectedError)
 
       expect(() => {
-        validationHelper.function_(null)
+        validationHelper.validateFunction(null)
       }).toThrow(expectedError)
 
       expect(() => {
-        validationHelper.function_(undefined)
+        validationHelper.validateFunction(undefined)
       }).toThrow(expectedError)
     })
 
     it('do not throw error on a function', () => {
-      validationHelper.function_(() => {})
-      validationHelper.function_(function x() {})
-      validationHelper.function_(class Dummy {})
+      validationHelper.validateFunction(() => {})
+      validationHelper.validateFunction(function x() {})
+      validationHelper.validateFunction(class Dummy {})
     })
   })
 
-  describe('inheritsFrom', () => {
+  describe('validateInheritsFrom', () => {
     it('throw error on not an inheritor of a class', () => {
       class X {}
 
@@ -533,19 +533,19 @@ describe('ValidationHelper', () => {
       class Y {}
 
       expect(() => {
-        validationHelper.inheritsFrom(X, X2)
+        validationHelper.validateInheritsFrom(X, X2)
       }).toThrow(/Validated class does not inherit from X2/)
 
       expect(() => {
-        validationHelper.inheritsFrom(X, Y)
+        validationHelper.validateInheritsFrom(X, Y)
       }).toThrow(/Validated class does not inherit from Y/)
 
       expect(() => {
-        validationHelper.inheritsFrom(Object, Y)
+        validationHelper.validateInheritsFrom(Object, Y)
       }).toThrow(/Validated class does not inherit from Y/)
 
       expect(() => {
-        validationHelper.inheritsFrom(null, Y)
+        validationHelper.validateInheritsFrom(null, Y)
       }).toThrow(/Validated class does not inherit from Y/)
     })
 
@@ -554,13 +554,13 @@ describe('ValidationHelper', () => {
 
       class X2 extends X {}
 
-      validationHelper.inheritsFrom(X, X)
-      validationHelper.inheritsFrom(X2, X2)
-      validationHelper.inheritsFrom(X2, X)
+      validationHelper.validateInheritsFrom(X, X)
+      validationHelper.validateInheritsFrom(X2, X2)
+      validationHelper.validateInheritsFrom(X2, X)
     })
   })
 
-  describe('instanceOf', () => {
+  describe('validateInstanceOf', () => {
     it('throw error on not an instance of a class', () => {
       class X {}
 
@@ -569,19 +569,19 @@ describe('ValidationHelper', () => {
       class Y {}
 
       expect(() => {
-        validationHelper.instanceOf(new X(), X2)
+        validationHelper.validateInstanceOf(new X(), X2)
       }).toThrow(/Validated object is not an instance of X2/)
 
       expect(() => {
-        validationHelper.instanceOf(new X(), Y)
+        validationHelper.validateInstanceOf(new X(), Y)
       }).toThrow(/Validated object is not an instance of Y/)
 
       expect(() => {
-        validationHelper.instanceOf({}, Y)
+        validationHelper.validateInstanceOf({}, Y)
       }).toThrow(/Validated object is not an instance of Y/)
 
       expect(() => {
-        validationHelper.instanceOf(null, Y)
+        validationHelper.validateInstanceOf(null, Y)
       }).toThrow(/Validated object is not an instance of Y/)
     })
 
@@ -590,76 +590,76 @@ describe('ValidationHelper', () => {
 
       class X2 extends X {}
 
-      validationHelper.instanceOf(new X(), X)
-      validationHelper.instanceOf(new X2(), X2)
-      validationHelper.instanceOf(new X2(), X)
+      validationHelper.validateInstanceOf(new X(), X)
+      validationHelper.validateInstanceOf(new X2(), X2)
+      validationHelper.validateInstanceOf(new X2(), X)
     })
   })
 
-  describe('lessThan', () => {
+  describe('validateLessThan', () => {
     it('throw error on not less than', () => {
       expect(() => {
-        validationHelper.lessThan(1, 1)
+        validationHelper.validateLessThan(1, 1)
       }).toThrow(/Validated number 1 is not less than the threshold 1/)
 
       expect(() => {
-        validationHelper.lessThan(2, 1)
+        validationHelper.validateLessThan(2, 1)
       }).toThrow(/Validated number 2 is not less than the threshold 1/)
     })
 
     it('do not throw error on less than', () => {
-      validationHelper.lessThan(1, 2)
-      validationHelper.lessThan(1, 1.1)
+      validationHelper.validateLessThan(1, 2)
+      validationHelper.validateLessThan(1, 1.1)
     })
   })
 
-  describe('greaterThan', () => {
+  describe('validateGreaterThan', () => {
     it('throw error on not greater than', () => {
       expect(() => {
-        validationHelper.greaterThan(1, 1)
+        validationHelper.validateGreaterThan(1, 1)
       }).toThrow(/Validated number 1 is not greater than the threshold 1/)
 
       expect(() => {
-        validationHelper.greaterThan(0, 1)
+        validationHelper.validateGreaterThan(0, 1)
       }).toThrow(/Validated number 0 is not greater than the threshold 1/)
     })
 
     it('do not throw error on greater than', () => {
-      validationHelper.greaterThan(2, 1)
-      validationHelper.greaterThan(1.1, 1)
+      validationHelper.validateGreaterThan(2, 1)
+      validationHelper.validateGreaterThan(1.1, 1)
     })
   })
 
-  describe('equal', () => {
+  describe('validateEqual', () => {
     it('throw error on not equal to', () => {
       expect(() => {
-        validationHelper.equal(1, 2)
+        validationHelper.validateEqual(1, 2)
       }).toThrow(/Validated entity 1 is not equal to 2/)
 
       expect(() => {
-        validationHelper.equal({}, {})
+        validationHelper.validateEqual({}, {})
       }).toThrow('Validated entity [object Object] is not equal to [object Object]')
 
       expect(() => {
-        validationHelper.equal('a', 'b')
+        validationHelper.validateEqual('a', 'b')
       }).toThrow(/Validated entity a is not equal to b/)
     })
 
     it('do not throw error on equal to', () => {
-      validationHelper.equal(1, 1)
-      validationHelper.equal('dummy', 'dummy')
+      validationHelper.validateEqual(1, 1)
+      validationHelper.validateEqual('dummy', 'dummy')
 
       const object = {}
-      validationHelper.equal(object, object)
-      validationHelper.equal(null, null)
-      validationHelper.equal(undefined, undefined)
+      validationHelper.validateEqual(object, object)
+      validationHelper.validateEqual(null, null)
+      validationHelper.validateEqual(undefined, undefined)
     })
   })
 
   describe('ValidationError', () => {
     it('throws ValidationError', () => {
       expect(() => {
-        validationHelper.string(undefined)
+        validationHelper.validateString(undefined)
       }).toThrow(new ValidationError('Validated object is not a string'))
     })
   })
