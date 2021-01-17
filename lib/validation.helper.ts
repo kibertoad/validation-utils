@@ -118,6 +118,21 @@ export function validateEqual<T>(validatedEntity: any, expectedEqualTo: T, error
 }
 
 /**
+ * Checks value to be included among specified entities (indexOf !== -1 comparison)
+ * @param {*} validatedEntity
+ * @param {*} expectedOneOfEntities - if validated entity is not equal to one of these, throw an error
+ * @param {String} [errorText] - message for error thrown if validation fails
+ * @returns {number} validatedObject
+ */
+export function validateOneOf<T>(validatedEntity: any, expectedOneOfEntities: T[], errorText?: string): T {
+  const index = expectedOneOfEntities.indexOf(validatedEntity)
+  if (index === -1) {
+    throw new ValidationError(errorText || `Validated entity ${validatedEntity} is not one of ${expectedOneOfEntities}`)
+  }
+  return validatedEntity
+}
+
+/**
  * Checks value to be a number that is less than 0
  * @param {*} validatedObject
  * @param {String} [errorText] - message for error thrown if validation fails

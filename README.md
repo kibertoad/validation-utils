@@ -37,6 +37,7 @@ import { validateNotEmpty } from 'validation-utils';
 - **validateBooleanTrue(entity [, errorText])** - check if entity is a boolean with value True.
 - **validateDate(entity [, errorText])** - check if entity is an instance of Date.
 - **validateEqual(entity, expectedEqualEntity [, errorText])** - check if entity is equal to the expected one (compared with ===).
+- **validateOneOf(entity, expectedOneOfEntities [, errorText])** - check if entity is equal to one of the expected ones (indexOf !== -1).
 - **validateFalsy(entity [, errorText])** - check if entity is falsy.
 - **validateFunction(entity [, errorText])** - check if entity is a function.
 - **validateInheritsFrom(entityClass, expectedParentClass [, errorText])** - check if class inherits from a given class.

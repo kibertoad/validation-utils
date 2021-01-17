@@ -656,6 +656,44 @@ describe('ValidationHelper', () => {
     })
   })
 
+  describe('validateOneOf', () => {
+    it('throw error on not one of', () => {
+      expect(() => {
+        validationHelper.validateOneOf(1, [2, 3])
+      }).toThrow(/Validated entity 1 is not one of 2,3/)
+
+      expect(() => {
+        validationHelper.validateOneOf({}, [{}])
+      }).toThrow('Validated entity [object Object] is not one of [object Object]')
+
+      expect(() => {
+        validationHelper.validateOneOf(['a'], ['b'])
+      }).toThrow(/Validated entity a is not one of b/)
+    })
+
+    it('do not throw error on one of', () => {
+      validationHelper.validateOneOf(1, [1])
+      validationHelper.validateOneOf(1, [2, 1])
+      validationHelper.validateOneOf('dummy', ['dummy', 'other'])
+
+      const object = {}
+      validationHelper.validateOneOf(object, [object])
+      validationHelper.validateOneOf(null, [1, null])
+      validationHelper.validateOneOf(undefined, [1, undefined])
+    })
+
+    it('allows to narrow down type', () => {
+      type strValue = 'a' | 'b'
+      let inputValue: string
+      inputValue = ''
+      inputValue += 'b'
+
+      const validatedValue: strValue = validationHelper.validateOneOf(inputValue, ['a', 'b'])
+
+      expect(validatedValue).toEqual(inputValue)
+    })
+  })
+
   describe('ValidationError', () => {
     it('throws ValidationError', () => {
       expect(() => {
