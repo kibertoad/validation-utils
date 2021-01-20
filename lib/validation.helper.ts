@@ -132,6 +132,14 @@ export function validateOneOf<T>(validatedEntity: any, expectedOneOfEntities: T[
   return validatedEntity
 }
 
+export function validateSomeNotNil<T>(validatedEntities: T[], errorText?: string): T[] {
+  const someAreNotNil = validatedEntities.some((entity) => !isNil(entity))
+  if (!someAreNotNil) {
+    throw new ValidationError(errorText || 'All of validated values are nil')
+  }
+  return validatedEntities
+}
+
 /**
  * Checks value to be a number that is less than 0
  * @param {*} validatedObject

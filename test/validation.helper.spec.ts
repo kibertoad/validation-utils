@@ -694,6 +694,34 @@ describe('ValidationHelper', () => {
     })
   })
 
+  describe('validateSomeNotNil', () => {
+    it('throw error on all nil', () => {
+      expect(() => {
+        validationHelper.validateSomeNotNil([null, undefined])
+      }).toThrow(/All of validated values are nil/)
+
+      expect(() => {
+        validationHelper.validateSomeNotNil([null])
+      }).toThrow(/All of validated values are nil/)
+
+      expect(() => {
+        validationHelper.validateSomeNotNil([undefined])
+      }).toThrow(/All of validated values are nil/)
+
+      expect(() => {
+        validationHelper.validateSomeNotNil([])
+      }).toThrow(/All of validated values are nil/)
+    })
+
+    it('do not throw error on at least one not nil', () => {
+      validationHelper.validateSomeNotNil([1])
+      validationHelper.validateSomeNotNil(['a'])
+      validationHelper.validateSomeNotNil([''])
+      validationHelper.validateSomeNotNil([{}, null])
+      validationHelper.validateSomeNotNil([undefined, 1])
+    })
+  })
+
   describe('ValidationError', () => {
     it('throws ValidationError', () => {
       expect(() => {
