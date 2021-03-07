@@ -23,6 +23,8 @@ export {
   validateString,
   validateTruthy,
   validateHasProperties,
+  validateNotNilProperties,
+  validateSomeNotNil,
 } from './lib/validation.helper'
 
 export { ValidationError } from './lib/ValidationError'
