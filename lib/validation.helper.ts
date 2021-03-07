@@ -281,17 +281,42 @@ export function validateFunction(validatedEntity: any, errorText?: string): Func
  * Checks object to have at least a given set of properties defined
  * @param {*} validatedObject
  * @param {String[]} validatedProperties - names of properties which existence should be checked
+ * @param {string} [errorMessage] - error message prefixed to the list of undefined properties
  * @returns {*} validatedObject
  */
-export function validateHasProperties(validatedObject: any, validatedProperties: string[]): any {
+export function validateHasProperties(validatedObject: any, validatedProperties: string[], errorMessage?: string): any {
   validateNotNil(validatedObject)
 
   const undefinedProperties = validatedProperties.filter((property) => {
     return !Object.prototype.hasOwnProperty.call(validatedObject, property)
   })
 
-  if (!isEmpty(undefinedProperties)) {
-    throw new ValidationError("Validated object doesn't have properties: " + undefinedProperties)
+  if (undefinedProperties.length > 0) {
+    throw new ValidationError(`${errorMessage ?? "Validated object doesn't have properties: "}${undefinedProperties}`)
+  }
+  return validatedObject
+}
+
+/**
+ * Checks object to have at least a given set of not nil properties
+ * @param {*} validatedObject
+ * @param {String[]} validatedProperties - names of properties which existence should be checked
+ * @param {string} [errorMessage] - error message prefixed to the list of nil properties
+ * @returns {*} validatedObject
+ */
+export function validateNotNilProperties(
+  validatedObject: any,
+  validatedProperties: string[],
+  errorMessage?: string
+): any {
+  validateNotNil(validatedObject)
+
+  const nilProperties = validatedProperties.filter((property) => {
+    return isNil(validatedObject[property])
+  })
+
+  if (nilProperties.length > 0) {
+    throw new ValidationError(`${errorMessage ?? 'Validated object has nil properties: '}${nilProperties}`)
   }
   return validatedObject
 }

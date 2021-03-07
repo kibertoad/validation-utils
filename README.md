@@ -54,34 +54,10 @@ import { validateNotEmpty } from 'validation-utils';
 - **validateString(entity [, errorText])** - check if entity is a string.
 - **validateObject(entity [, errorText])** - check if entity is an object.
 - **validateTruthy(entity [, errorText])** - check if entity is truthy.
-- **validateHasProperties(entity, expectedProperties)** - check if entity has at least a given set of properties defined.
+- **validateHasProperties(entity, expectedProperties[, errorText])** - check if entity has at least a given set of properties defined.
+- **validateNotNilProperties(entity, expectedProperties[, errorText])** - check if none of specified properties are null or undefined for the entity.
 
 All validators return validated value as a result.
-
-### License (MIT)
-
-```
-Copyright (c) 2017-2020 Igor Savin <kibertoad@gmail.com>
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-```
 
 [npm-image]: https://img.shields.io/npm/v/validation-utils.svg
 [npm-url]: https://npmjs.org/package/validation-utils

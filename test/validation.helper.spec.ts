@@ -7,6 +7,10 @@ describe('ValidationHelper', () => {
       expect(() => {
         validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, ['b', 'd', 'e'])
       }).toThrow(/Validated object doesn't have properties: d,e/)
+
+      expect(() => {
+        validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, ['b', 'd', 'e'], 'Error: ')
+      }).toThrow(/Error: d,e/)
     })
 
     it('do not throw error on defined properties', () => {
@@ -15,6 +19,32 @@ describe('ValidationHelper', () => {
       validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, ['b'])
 
       validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, [])
+
+      validationHelper.validateHasProperties({ a: null, b: undefined, c: 0 }, ['a', 'b', 'c'])
+    })
+  })
+
+  describe('validateNotNilProperties', () => {
+    it('throw error on undefined properties', () => {
+      expect(() => {
+        validationHelper.validateNotNilProperties({ a: 'a', b: 'b', c: 'c' }, ['b', 'd', 'e'])
+      }).toThrow(/Validated object has nil properties: d,e/)
+    })
+
+    it('throw error on nil properties', () => {
+      expect(() => {
+        validationHelper.validateNotNilProperties({ a: null, b: 'b', c: undefined }, ['a', 'b', 'c'], 'Error: ')
+      }).toThrow(/Error: a,c/)
+    })
+
+    it('do not throw error on not nil properties', () => {
+      validationHelper.validateNotNilProperties({ a: 'a', b: 'b', c: 'c' }, ['a', 'b', 'c'])
+
+      validationHelper.validateNotNilProperties({ a: 'a', b: 'b', c: 'c' }, ['b'])
+
+      validationHelper.validateNotNilProperties({ a: 'a', b: 'b', c: 'c' }, [])
+
+      validationHelper.validateNotNilProperties({ a: '', b: 0, c: {} }, ['a', 'b', 'c'])
     })
   })
 
