@@ -7,11 +7,11 @@ import { isEmpty, isNil, isFinite, isString, isBoolean, isFunction, isObject, is
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function validateNotNil<T>(validatedObject: T, errorText?: string): T {
+export function validateNotNil<T>(validatedObject: T | null | undefined, errorText?: string): T {
   if (isNil(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is null or undefined')
   }
-  return validatedObject
+  return validatedObject!
 }
 
 /**
@@ -20,11 +20,11 @@ export function validateNotNil<T>(validatedObject: T, errorText?: string): T {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function validateNil<T>(validatedObject: T, errorText?: string): T {
+export function validateNil<T>(validatedObject: T, errorText?: string): Extract<T, null> | Extract<T, undefined> {
   if (!isNil(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not null or undefined')
   }
-  return validatedObject
+  return validatedObject as any
 }
 
 /**
