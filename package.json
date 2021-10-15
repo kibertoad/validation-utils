@@ -57,7 +57,7 @@
     "pinst": "^2.1.6",
     "prettier": "^2.4.1",
     "typescript": "4.4.3",
-    "ts-jest": "27.0.5"
+    "ts-jest": "27.0.6"
   },
   "files": [
     "README.md",
