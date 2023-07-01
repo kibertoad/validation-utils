@@ -8,7 +8,7 @@
 
 Validation utils for Javascript that provide convenient way to throw a typed error if some expected condition is not satisfied.  
 
-Node.JS 6+ is supported.
+Node.JS 12+ is supported.
 
 ### Getting started
 

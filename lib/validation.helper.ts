@@ -124,7 +124,7 @@ export function validateEqual<T>(validatedEntity: any, expectedEqualTo: T, error
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function validateOneOf<T>(validatedEntity: any, expectedOneOfEntities: T[], errorText?: string): T {
+export function validateOneOf<const T>(validatedEntity: any, expectedOneOfEntities: T[], errorText?: string): T {
   const index = expectedOneOfEntities.indexOf(validatedEntity)
   if (index === -1) {
     throw new ValidationError(errorText || `Validated entity ${validatedEntity} is not one of ${expectedOneOfEntities}`)
@@ -132,7 +132,7 @@ export function validateOneOf<T>(validatedEntity: any, expectedOneOfEntities: T[
   return validatedEntity
 }
 
-export function validateSomeNotNil<T>(validatedEntities: T[], errorText?: string): T[] {
+export function validateSomeNotNil<const T>(validatedEntities: T[], errorText?: string): T[] {
   const someAreNotNil = validatedEntities.some((entity) => !isNil(entity))
   if (!someAreNotNil) {
     throw new ValidationError(errorText || 'All of validated values are nil')
