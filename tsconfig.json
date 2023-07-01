@@ -2,11 +2,11 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "commonjs",
-    "target": "es6",
+    "target": "ES2018",
     "sourceMap": false,
     "declaration": true,
     "declarationMap": false,
-    "types": ["node", "jest"],
+    "types": ["node", "vitest/globals"],
     "strict": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
