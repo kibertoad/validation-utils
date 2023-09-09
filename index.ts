@@ -6,6 +6,7 @@ export {
   validateBooleanTrue,
   validateDate,
   validateEqual,
+  validateEqualArrays,
   validateOneOf,
   validateFalsy,
   validateFunction,

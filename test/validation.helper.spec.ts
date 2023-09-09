@@ -686,6 +686,37 @@ describe('ValidationHelper', () => {
     })
   })
 
+  describe('validateEqualArrays', () => {
+    it('throw error on not equal to', () => {
+      expect(() => {
+        validationHelper.validateEqualArrays([1], [2])
+      }).toThrow(/Validated array 1 is not equal to 2/)
+
+      expect(() => {
+        validationHelper.validateEqualArrays([1, 2, 3], [3, 2, 1])
+      }).toThrow(/Validated array 1,2,3 is not equal to 3,2,1/)
+
+      expect(() => {
+        validationHelper.validateEqualArrays([{}], [{}])
+      }).toThrow('Validated array [object Object] is not equal to [object Object]')
+
+      expect(() => {
+        validationHelper.validateEqualArrays(['a'], ['b'])
+      }).toThrow(/Validated array a is not equal to b/)
+    })
+
+    it('do not throw error on equal to', () => {
+      validationHelper.validateEqualArrays([1], [1])
+      validationHelper.validateEqualArrays([1, 2, 3], [1, 2, 3])
+      validationHelper.validateEqualArrays(['dummy'], ['dummy'])
+
+      const object = {}
+      validationHelper.validateEqualArrays([object], [object])
+      validationHelper.validateEqualArrays([null], [null])
+      validationHelper.validateEqualArrays([undefined], [undefined])
+    })
+  })
+
   describe('validateOneOf', () => {
     it('throw error on not one of', () => {
       expect(() => {
