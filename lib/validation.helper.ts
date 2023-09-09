@@ -79,7 +79,7 @@ export function validateLessThan(validatedObject: any, threshold: number, errorT
   validateNumber(threshold, 'Threshold is not a number')
   if (validatedObject >= threshold) {
     throw new ValidationError(
-      errorText || `Validated number ${validatedObject} is not less than the threshold ${threshold}`
+      errorText || `Validated number ${validatedObject} is not less than the threshold ${threshold}`,
     )
   }
   return validatedObject
@@ -97,7 +97,7 @@ export function validateGreaterThan(validatedObject: any, threshold: number, err
   validateNumber(threshold, 'Threshold is not a number')
   if (validatedObject <= threshold) {
     throw new ValidationError(
-      errorText || `Validated number ${validatedObject} is not greater than the threshold ${threshold}`
+      errorText || `Validated number ${validatedObject} is not greater than the threshold ${threshold}`,
     )
   }
   return validatedObject
@@ -113,6 +113,19 @@ export function validateGreaterThan(validatedObject: any, threshold: number, err
 export function validateEqual<T>(validatedEntity: any, expectedEqualTo: T, errorText?: string): T {
   if (validatedEntity !== expectedEqualTo) {
     throw new ValidationError(errorText || `Validated entity ${validatedEntity} is not equal to ${expectedEqualTo}`)
+  }
+  return validatedEntity
+}
+
+export function validateEqualArrays<T>(validatedEntity: any[], expectedEqualTo: T[], errorText?: string): T[] {
+  const isEqual =
+    Array.isArray(validatedEntity) &&
+    Array.isArray(expectedEqualTo) &&
+    validatedEntity.length === expectedEqualTo.length &&
+    validatedEntity.every((val, index) => val === expectedEqualTo[index])
+
+  if (!isEqual) {
+    throw new ValidationError(errorText || `Validated array ${validatedEntity} is not equal to ${expectedEqualTo}`)
   }
   return validatedEntity
 }
@@ -307,7 +320,7 @@ export function validateHasProperties(validatedObject: any, validatedProperties:
 export function validateNotNilProperties(
   validatedObject: any,
   validatedProperties: string[],
-  errorMessage?: string
+  errorMessage?: string,
 ): any {
   validateNotNil(validatedObject)
 
