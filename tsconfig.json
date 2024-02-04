@@ -26,6 +26,6 @@
     "node_modules",
     "dist",
     "test",
-    "vitest.config.ts"
+    "vitest.config.mts"
   ]
 }
