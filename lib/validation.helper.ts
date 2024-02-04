@@ -1,5 +1,5 @@
 import { isBoolean, isDate, isEmpty, isFunction, isNil, isObject, isString } from 'zoology'
-import ValidationError from './ValidationError'
+import { ValidationError } from './ValidationError'
 
 /**
  * Checks value not to be null or undefined

@@ -9,16 +9,31 @@
       "email": "kibertoad@gmail.com"
     }
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
   "scripts": {
-    "build": "tsc",
+    "build:dev": "tsc",
+    "build:release": "tsup",
     "test": "vitest",
     "test:everything": "npm run lint && npm run test:coverage",
     "test:coverage": "vitest --coverage",
     "lint": "biome lint index.ts lib test biome.json",
     "lint:fix": "biome check --apply index.ts lib test biome.json",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build:release"
   },
   "repository": {
     "type": "git",
@@ -46,6 +61,7 @@
     "@biomejs/biome": "^1.5.3",
     "@types/node": "^20.11.16",
     "@vitest/coverage-v8": "^1.2.2",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"
   },
