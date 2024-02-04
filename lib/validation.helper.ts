@@ -1,5 +1,5 @@
-import ValidationError from './ValidationError'
-import { isEmpty, isNil, isFinite, isString, isBoolean, isFunction, isObject, isDate } from 'zoology'
+import { isBoolean, isDate, isEmpty, isFunction, isNil, isObject, isString } from 'zoology'
+import { ValidationError } from './ValidationError'
 
 /**
  * Checks value not to be null or undefined
@@ -47,7 +47,7 @@ export function validateNotEmpty<T>(validatedObject: T, errorText?: string): T {
  * @returns {number} validatedObject
  */
 export function validateNumber(validatedObject: any, errorText?: string): number {
-  if (!isFinite(validatedObject)) {
+  if (!Number.isFinite(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not a number')
   }
   return validatedObject as number
@@ -282,7 +282,6 @@ export function validateFalsy<T>(validatedObject: T, errorText?: string): T {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedEntity
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
 export function validateFunction(validatedEntity: any, errorText?: string): Function {
   if (!isFunction(validatedEntity)) {
     throw new ValidationError(errorText || 'Validated entity is not a function')

@@ -1,4 +1,5 @@
-import ValidationError from '../lib/ValidationError'
+import { describe, expect, it } from 'vitest'
+import { ValidationError } from '../lib/ValidationError'
 import * as validationHelper from '../lib/validation.helper'
 
 describe('ValidationHelper', () => {
