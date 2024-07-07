@@ -5,8 +5,4 @@
  */
 export class ValidationError extends Error {
   public isValidationError = 'true'
-
-  public constructor(message: string) {
-    super(message)
-  }
 }

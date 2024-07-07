@@ -32,7 +32,7 @@
     "test:everything": "npm run lint && npm run test:coverage",
     "test:coverage": "vitest --coverage",
     "lint": "biome lint index.ts lib test biome.json",
-    "lint:fix": "biome check --apply index.ts lib test biome.json",
+    "lint:fix": "biome check --write index.ts lib test biome.json",
     "prepublishOnly": "npm run build:release"
   },
   "repository": {
@@ -55,15 +55,16 @@
   ],
   "homepage": "http://github.com/kibertoad/validation-utils",
   "dependencies": {
-    "zoology": "^1.0.0"
+    "zoology": "^2.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
-    "@types/node": "^20.11.16",
-    "@vitest/coverage-v8": "^1.2.2",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3",
-    "vitest": "^1.2.2"
+    "@biomejs/biome": "^1.8.3",
+    "@kibertoad/biome-config": "^1.2.0",
+    "@types/node": "^20.14.10",
+    "@vitest/coverage-v8": "^1.6.0",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.3",
+    "vitest": "^1.6.0"
   },
   "files": [
     "README.md",
