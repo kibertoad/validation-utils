@@ -10,7 +10,11 @@ describe('ValidationHelper', () => {
       }).toThrow(/Validated object doesn't have properties: d,e/)
 
       expect(() => {
-        validationHelper.validateHasProperties({ a: 'a', b: 'b', c: 'c' }, ['b', 'd', 'e'], 'Error: ')
+        validationHelper.validateHasProperties(
+          { a: 'a', b: 'b', c: 'c' },
+          ['b', 'd', 'e'],
+          'Error: ',
+        )
       }).toThrow(/Error: d,e/)
     })
 
@@ -34,7 +38,11 @@ describe('ValidationHelper', () => {
 
     it('throw error on nil properties', () => {
       expect(() => {
-        validationHelper.validateNotNilProperties({ a: null, b: 'b', c: undefined }, ['a', 'b', 'c'], 'Error: ')
+        validationHelper.validateNotNilProperties(
+          { a: null, b: 'b', c: undefined },
+          ['a', 'b', 'c'],
+          'Error: ',
+        )
       }).toThrow(/Error: a,c/)
     })
 
@@ -60,7 +68,7 @@ describe('ValidationHelper', () => {
       }).toThrow(/Validated object is not truthy/)
 
       expect(() => {
-        validationHelper.validateTruthy(NaN)
+        validationHelper.validateTruthy(Number.NaN)
       }).toThrow(/Validated object is not truthy/)
 
       expect(() => {
@@ -112,7 +120,7 @@ describe('ValidationHelper', () => {
     it('do not throw error on falsy values', () => {
       validationHelper.validateFalsy(false)
       validationHelper.validateFalsy(undefined)
-      validationHelper.validateFalsy(NaN)
+      validationHelper.validateFalsy(Number.NaN)
       validationHelper.validateFalsy(0)
       validationHelper.validateFalsy('')
     })
@@ -235,7 +243,7 @@ describe('ValidationHelper', () => {
       }).toThrow(/Validated object is not False/)
 
       expect(() => {
-        validationHelper.validateBooleanFalse(NaN)
+        validationHelper.validateBooleanFalse(Number.NaN)
       }).toThrow(/Validated object is not False/)
 
       expect(() => {
@@ -263,7 +271,7 @@ describe('ValidationHelper', () => {
       }).toThrow(/Validated object is not a number/)
 
       expect(() => {
-        validationHelper.validateNumber(NaN)
+        validationHelper.validateNumber(Number.NaN)
       }).toThrow(/Validated object is not a number/)
 
       expect(() => {
@@ -294,7 +302,7 @@ describe('ValidationHelper', () => {
       }).toThrow(/Validated number is not positive/)
 
       expect(() => {
-        validationHelper.validatePositiveNumber(NaN)
+        validationHelper.validatePositiveNumber(Number.NaN)
       }).toThrow(/Validated object is not a number/)
     })
 
@@ -316,7 +324,7 @@ describe('ValidationHelper', () => {
       }).toThrow(/Validated number is not negative/)
 
       expect(() => {
-        validationHelper.validateNegativeNumber(NaN)
+        validationHelper.validateNegativeNumber(Number.NaN)
       }).toThrow(/Validated object is not a number/)
     })
 

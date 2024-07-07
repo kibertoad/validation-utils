@@ -20,7 +20,10 @@ export function validateNotNil<T>(validatedObject: T | null | undefined, errorTe
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function validateNil<T>(validatedObject: T, errorText?: string): Extract<T, null> | Extract<T, undefined> {
+export function validateNil<T>(
+  validatedObject: T,
+  errorText?: string,
+): Extract<T, null> | Extract<T, undefined> {
   if (!isNil(validatedObject)) {
     throw new ValidationError(errorText || 'Validated object is not null or undefined')
   }
@@ -74,12 +77,17 @@ export function validatePositiveNumber(validatedObject: any, errorText?: string)
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function validateLessThan(validatedObject: any, threshold: number, errorText?: string): number {
+export function validateLessThan(
+  validatedObject: any,
+  threshold: number,
+  errorText?: string,
+): number {
   validateNumber(validatedObject)
   validateNumber(threshold, 'Threshold is not a number')
   if (validatedObject >= threshold) {
     throw new ValidationError(
-      errorText || `Validated number ${validatedObject} is not less than the threshold ${threshold}`,
+      errorText ||
+        `Validated number ${validatedObject} is not less than the threshold ${threshold}`,
     )
   }
   return validatedObject
@@ -92,12 +100,17 @@ export function validateLessThan(validatedObject: any, threshold: number, errorT
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function validateGreaterThan(validatedObject: any, threshold: number, errorText?: string): number {
+export function validateGreaterThan(
+  validatedObject: any,
+  threshold: number,
+  errorText?: string,
+): number {
   validateNumber(validatedObject)
   validateNumber(threshold, 'Threshold is not a number')
   if (validatedObject <= threshold) {
     throw new ValidationError(
-      errorText || `Validated number ${validatedObject} is not greater than the threshold ${threshold}`,
+      errorText ||
+        `Validated number ${validatedObject} is not greater than the threshold ${threshold}`,
     )
   }
   return validatedObject
@@ -112,12 +125,18 @@ export function validateGreaterThan(validatedObject: any, threshold: number, err
  */
 export function validateEqual<T>(validatedEntity: any, expectedEqualTo: T, errorText?: string): T {
   if (validatedEntity !== expectedEqualTo) {
-    throw new ValidationError(errorText || `Validated entity ${validatedEntity} is not equal to ${expectedEqualTo}`)
+    throw new ValidationError(
+      errorText || `Validated entity ${validatedEntity} is not equal to ${expectedEqualTo}`,
+    )
   }
   return validatedEntity
 }
 
-export function validateEqualArrays<T>(validatedEntity: any[], expectedEqualTo: T[], errorText?: string): T[] {
+export function validateEqualArrays<T>(
+  validatedEntity: any[],
+  expectedEqualTo: T[],
+  errorText?: string,
+): T[] {
   const isEqual =
     Array.isArray(validatedEntity) &&
     Array.isArray(expectedEqualTo) &&
@@ -125,7 +144,9 @@ export function validateEqualArrays<T>(validatedEntity: any[], expectedEqualTo: 
     validatedEntity.every((val, index) => val === expectedEqualTo[index])
 
   if (!isEqual) {
-    throw new ValidationError(errorText || `Validated array ${validatedEntity} is not equal to ${expectedEqualTo}`)
+    throw new ValidationError(
+      errorText || `Validated array ${validatedEntity} is not equal to ${expectedEqualTo}`,
+    )
   }
   return validatedEntity
 }
@@ -137,10 +158,16 @@ export function validateEqualArrays<T>(validatedEntity: any[], expectedEqualTo: 
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {number} validatedObject
  */
-export function validateOneOf<const T>(validatedEntity: any, expectedOneOfEntities: T[], errorText?: string): T {
+export function validateOneOf<const T>(
+  validatedEntity: any,
+  expectedOneOfEntities: T[],
+  errorText?: string,
+): T {
   const index = expectedOneOfEntities.indexOf(validatedEntity)
   if (index === -1) {
-    throw new ValidationError(errorText || `Validated entity ${validatedEntity} is not one of ${expectedOneOfEntities}`)
+    throw new ValidationError(
+      errorText || `Validated entity ${validatedEntity} is not one of ${expectedOneOfEntities}`,
+    )
   }
   return validatedEntity
 }
@@ -212,7 +239,10 @@ export function validateDate(validatedEntity: any, errorText?: string): Date {
  * @param {String} [errorText] - message for error thrown if validation fails
  * @returns {*} validatedObject
  */
-export function validateBooleanNonStrict(validatedObject: any, errorText?: string): boolean | string {
+export function validateBooleanNonStrict(
+  validatedObject: any,
+  errorText?: string,
+): boolean | string {
   if (!isBoolean(validatedObject)) {
     if (
       !isString(validatedObject) ||
@@ -296,7 +326,11 @@ export function validateFunction(validatedEntity: any, errorText?: string): Func
  * @param {string} [errorMessage] - error message prefixed to the list of undefined properties
  * @returns {*} validatedObject
  */
-export function validateHasProperties(validatedObject: any, validatedProperties: string[], errorMessage?: string): any {
+export function validateHasProperties(
+  validatedObject: any,
+  validatedProperties: string[],
+  errorMessage?: string,
+): any {
   validateNotNil(validatedObject)
 
   const undefinedProperties = validatedProperties.filter((property) => {
@@ -304,7 +338,9 @@ export function validateHasProperties(validatedObject: any, validatedProperties:
   })
 
   if (undefinedProperties.length > 0) {
-    throw new ValidationError(`${errorMessage ?? "Validated object doesn't have properties: "}${undefinedProperties}`)
+    throw new ValidationError(
+      `${errorMessage ?? "Validated object doesn't have properties: "}${undefinedProperties}`,
+    )
   }
   return validatedObject
 }
@@ -328,7 +364,9 @@ export function validateNotNilProperties(
   })
 
   if (nilProperties.length > 0) {
-    throw new ValidationError(`${errorMessage ?? 'Validated object has nil properties: '}${nilProperties}`)
+    throw new ValidationError(
+      `${errorMessage ?? 'Validated object has nil properties: '}${nilProperties}`,
+    )
   }
   return validatedObject
 }
@@ -366,9 +404,15 @@ export function validateArray(validatedObject: any, errorText?: string): any[] {
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-export function validateInstanceOf<T>(validatedObject: T, expectedClass: any, errorText?: string): T {
+export function validateInstanceOf<T>(
+  validatedObject: T,
+  expectedClass: any,
+  errorText?: string,
+): T {
   if (!(validatedObject instanceof expectedClass)) {
-    throw new ValidationError(errorText || `Validated object is not an instance of ${expectedClass.name}`)
+    throw new ValidationError(
+      errorText || `Validated object is not an instance of ${expectedClass.name}`,
+    )
   }
   return validatedObject
 }
@@ -380,14 +424,21 @@ export function validateInstanceOf<T>(validatedObject: T, expectedClass: any, er
  * @param {string} [errorText] - message for error thrown if validation fails
  * @returns {Object} validatedObject
  */
-export function validateInheritsFrom(validatedClass: any, expectedParentClass: any, errorText?: string): any {
+export function validateInheritsFrom(
+  validatedClass: any,
+  expectedParentClass: any,
+  errorText?: string,
+): any {
   if (
     //fail-fast if it is nil
     !validatedClass ||
     //lenient check whether class directly or indirectly inherits from expected class
-    (!(validatedClass.prototype instanceof expectedParentClass) && validatedClass !== expectedParentClass)
+    (!(validatedClass.prototype instanceof expectedParentClass) &&
+      validatedClass !== expectedParentClass)
   ) {
-    throw new ValidationError(errorText || `Validated class does not inherit from ${expectedParentClass.name}`)
+    throw new ValidationError(
+      errorText || `Validated class does not inherit from ${expectedParentClass.name}`,
+    )
   }
   return validatedClass
 }
