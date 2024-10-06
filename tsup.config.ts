@@ -14,7 +14,7 @@ export default defineConfig({
   },
   sourcemap: false,
   skipNodeModulesBundle: true,
-  target: 'es2022',
+  target: 'es2018',
   tsconfig: './tsconfig.build.json',
   keepNames: true,
   bundle: true,
