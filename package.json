@@ -35,7 +35,7 @@
     "lint:fix": "biome check --write index.ts lib test biome.json",
     "prepublishOnly": "pnpm build:release"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@11.2.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/kibertoad/validation-utils.git"
@@ -71,11 +71,5 @@
     "README.md",
     "LICENSE",
     "dist/*"
-  ],
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "esbuild"
-    ]
-  }
+  ]
 }
