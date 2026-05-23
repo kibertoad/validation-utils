@@ -29,12 +29,13 @@
     "build:dev": "tsc",
     "build:release": "tsup",
     "test": "vitest",
-    "test:everything": "npm run lint && npm run test:coverage",
+    "test:everything": "pnpm lint && pnpm test:coverage",
     "test:coverage": "vitest --coverage",
     "lint": "biome lint index.ts lib test biome.json",
     "lint:fix": "biome check --write index.ts lib test biome.json",
-    "prepublishOnly": "npm run build:release"
+    "prepublishOnly": "pnpm build:release"
   },
+  "packageManager": "pnpm@11.2.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/kibertoad/validation-utils.git"
