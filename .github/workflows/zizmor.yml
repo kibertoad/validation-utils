@@ -14,7 +14,7 @@ permissions: {}
 
 jobs:
   zizmor:
-    name: zizmor latest via PyPI
+    name: zizmor
     runs-on: ubuntu-latest
     permissions:
       security-events: write
@@ -27,23 +27,9 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e  # v6
-
-      - name: Run zizmor (SARIF output)
-        run: uvx zizmor --format=sarif . > results.sarif
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload SARIF file
-        if: always()
-        uses: github/codeql-action/upload-sarif@03e4368ac7daa2bd82b3e85262f3bf87ee112f57  # v3
-        with:
-          sarif_file: results.sarif
-          category: zizmor
-
       - name: Run zizmor (annotations + fail on warnings)
-        run: uvx zizmor --format=github --min-severity=medium .
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: zizmorcore/zizmor-action@5f14fd08f7cf1cb1609c1e344975f152c7ee938d  # v0.5.6
+        with:
+          annotations: 'true'
+          advanced-security: 'false'
+          min-severity: 'medium'
