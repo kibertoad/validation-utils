@@ -28,7 +28,7 @@ jobs:
           persist-credentials: false
 
       - name: Install uv
-        uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff  # v6
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e  # v6
 
       - name: Run zizmor (SARIF output)
         run: uvx zizmor --format=sarif . > results.sarif
@@ -38,7 +38,7 @@ jobs:
 
       - name: Upload SARIF file
         if: always()
-        uses: github/codeql-action/upload-sarif@fee9466b8957867761f2d78f922ab084e3e2dd17  # v3
+        uses: github/codeql-action/upload-sarif@03e4368ac7daa2bd82b3e85262f3bf87ee112f57  # v3
         with:
           sarif_file: results.sarif
           category: zizmor
