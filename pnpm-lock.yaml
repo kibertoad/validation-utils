@@ -16,8 +16,8 @@ importers:
         specifier: ^1.9.3
         version: 1.9.4
       '@kibertoad/biome-config':
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^2.0.0
+        version: 2.0.0(@biomejs/biome@1.9.4)
       '@types/node':
         specifier: ^20.16.10
         version: 20.19.41
@@ -432,8 +432,10 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kibertoad/biome-config@1.2.1':
-    resolution: {integrity: sha512-hFaSXIyS0L2AL4u8QPGH2SDz7nPe5DjIa8yiGfVYylvjs9X1c31Nz4+z5ko/x53XchOIdV+3QqyUn81RuwGBWQ==}
+  '@kibertoad/biome-config@2.0.0':
+    resolution: {integrity: sha512-44fCRYSeeJrXXi62G68YquHWxsjkNugce7mV0LSnBjF/vXGJsjd8jCZLB8u9YOJHP7v/9dNkG6+SaaGl5stYcw==}
+    peerDependencies:
+      '@biomejs/biome': ^2.0.5
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -1382,7 +1384,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kibertoad/biome-config@1.2.1': {}
+  '@kibertoad/biome-config@2.0.0(@biomejs/biome@1.9.4)':
+    dependencies:
+      '@biomejs/biome': 1.9.4
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
